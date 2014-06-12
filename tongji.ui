@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>tongji</class>
+ <widget class="QDialog" name="tongji">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>租金统计</string>
+  </property>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>30</y>
+     <width>551</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <column>
+    <property name="text">
+     <string>收费编号</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>租金年份</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>租金月份</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>应交租金</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>已交租金</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>欠费金额</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>客户姓名</string>
+    </property>
+   </column>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

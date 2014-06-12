@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>lessee</class>
+ <widget class="QDialog" name="lessee">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>809</width>
+    <height>590</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>租户信息统计</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>731</width>
+     <height>531</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>租户信息表</string>
+    </attribute>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>731</width>
+       <height>501</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>租户编号</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>租户姓名</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>工作单位</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>电话</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>身份证号</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

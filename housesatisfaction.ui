@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>housesatisfaction</class>
+ <widget class="QDialog" name="housesatisfaction">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>631</width>
+    <height>446</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>房屋报表</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidgetRoom">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>591</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>所有房屋资料</string>
+    </attribute>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>591</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>房屋编号</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>房屋类型</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>地址</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>建筑面积</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>实际面积</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>装修情况</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>价格</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>备注</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>已出租房屋资料</string>
+    </attribute>
+    <widget class="QTableWidget" name="tableWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>591</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>房屋编号</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>房屋类型</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>地址</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>建筑面积</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>实际面积</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>装修情况</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>价格</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>备注</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>未出租房屋资料</string>
+    </attribute>
+    <widget class="QTableWidget" name="tableWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>591</width>
+       <height>381</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>房屋编号</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>房屋类型</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>地址</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>建筑面积</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>实际面积</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>装修情况</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>价格</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>备注</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
