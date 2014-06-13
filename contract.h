@@ -15,6 +15,9 @@ public:
     explicit contract(QWidget *parent = 0);
     ~contract();
 
+private slots:
+    void on_btnClose_clicked();
+
 private:
     Ui::contract *ui;
 };

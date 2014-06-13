@@ -181,7 +181,7 @@ void housedata::on_btnDelete_clicked()
             //shuzu xiangguan yidong
             deleteOneRoomInfo(ri,currentIndex,&maxIndex);
 
-            //ui->lineEditCount->setText(QString::number(maxIndex));
+            ui->lineEditCount->setText(QString::number(maxIndex));
             //queryRoomInfo(ri);
         }
         else {

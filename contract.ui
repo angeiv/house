@@ -25,77 +25,6 @@
    <property name="title">
     <string>功能键</string>
    </property>
-   <widget class="QPushButton" name="btnConclud">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>30</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>签订</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnAdd">
-    <property name="geometry">
-     <rect>
-      <x>130</x>
-      <y>30</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>添加租户资料</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnCollectcash">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>30</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>收取押金</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnCol">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>30</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>收取租金</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnClear">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>30</y>
-      <width>101</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>清空重填</string>
-    </property>
-   </widget>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
@@ -114,8 +43,8 @@
     <widget class="QPushButton" name="btnClose">
      <property name="geometry">
       <rect>
-       <x>570</x>
-       <y>30</y>
+       <x>390</x>
+       <y>20</y>
        <width>101</width>
        <height>41</height>
       </rect>
@@ -124,13 +53,20 @@
       <string>关闭</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="btnConclud">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>20</y>
+       <width>101</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>签订</string>
+     </property>
+    </widget>
    </widget>
-   <zorder>frame</zorder>
-   <zorder>btnConclud</zorder>
-   <zorder>btnAdd</zorder>
-   <zorder>btnCollectcash</zorder>
-   <zorder>btnCol</zorder>
-   <zorder>btnClear</zorder>
   </widget>
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
@@ -359,16 +295,6 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEditStopData">
-       <property name="geometry">
-        <rect>
-         <x>300</x>
-         <y>60</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="lineEdit_All">
        <property name="geometry">
         <rect>
@@ -377,19 +303,6 @@
          <width>81</width>
          <height>20</height>
         </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="lineEdit_BookData">
-       <property name="geometry">
-        <rect>
-         <x>300</x>
-         <y>140</y>
-         <width>81</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
        </property>
       </widget>
       <widget class="QLineEdit" name="lineEdit_Tenancy">
@@ -498,6 +411,106 @@
          <width>531</width>
          <height>41</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEdit">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>60</y>
+         <width>91</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="dateTime">
+        <datetime>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+         <year>2014</year>
+         <month>1</month>
+         <day>1</day>
+        </datetime>
+       </property>
+       <property name="minimumDateTime">
+        <datetime>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+         <year>2014</year>
+         <month>1</month>
+         <day>1</day>
+        </datetime>
+       </property>
+       <property name="maximumDate">
+        <date>
+         <year>2052</year>
+         <month>12</month>
+         <day>31</day>
+        </date>
+       </property>
+       <property name="minimumDate">
+        <date>
+         <year>2014</year>
+         <month>1</month>
+         <day>1</day>
+        </date>
+       </property>
+       <property name="displayFormat">
+        <string>yyyy/MM/dd</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QDateEdit" name="dateEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>140</y>
+         <width>91</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="dateTime">
+        <datetime>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+         <year>2014</year>
+         <month>1</month>
+         <day>1</day>
+        </datetime>
+       </property>
+       <property name="minimumDateTime">
+        <datetime>
+         <hour>0</hour>
+         <minute>0</minute>
+         <second>0</second>
+         <year>2014</year>
+         <month>1</month>
+         <day>1</day>
+        </datetime>
+       </property>
+       <property name="maximumDate">
+        <date>
+         <year>2052</year>
+         <month>12</month>
+         <day>31</day>
+        </date>
+       </property>
+       <property name="minimumDate">
+        <date>
+         <year>2014</year>
+         <month>1</month>
+         <day>1</day>
+        </date>
+       </property>
+       <property name="displayFormat">
+        <string>yyyy/MM/dd</string>
+       </property>
+       <property name="calendarPopup">
+        <bool>true</bool>
        </property>
       </widget>
      </widget>

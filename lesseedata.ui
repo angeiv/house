@@ -420,18 +420,35 @@
      </property>
     </item>
    </widget>
-   <widget class="QTextEdit" name="textEdit_Remark">
+   <widget class="QTextEdit" name="textEdit">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>80</x>
       <y>130</y>
-      <width>581</width>
-      <height>41</height>
+      <width>591</width>
+      <height>31</height>
      </rect>
     </property>
    </widget>
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_Close</sender>
+   <signal>clicked()</signal>
+   <receiver>lesseedata</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>706</x>
+     <y>57</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>630</x>
+     <y>23</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

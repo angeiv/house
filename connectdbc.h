@@ -1,22 +1,15 @@
-/********************************************************************************
-* File Name:	connectdatabase.h
-* Description:	第4章实例训练
-* Reference book:《Linux环境下Qt4图形界面与MySQL编程》，机械工业出版社.2012.1
-* E_mail: openlinux2011@gmail.com
-*
-********************************************************************************/
-#ifndef LE_CONNECTDATABASE_H
-#define LE_CONNECTDATABASE_H
+#ifndef CONNECTDBC_H
+#define CONNECTDBC_H
 #include <QSqlDatabase>
 #include <QString>
 #include <QDebug>
 #include <QSqlQuery>
 #include <QVariant>
-#include <QSqlRecord>
-#include "le_customer.h"
 
-
-bool queryLesseeNumber(int *count)
+#include "customerinfo.h"
+#include "login.h"
+//#include "connectdatabase.h"
+bool queryCustomerNumber(int *count)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -24,7 +17,6 @@ bool queryLesseeNumber(int *count)
         db=QSqlDatabase::database("qt_sql_default_connection");
     else
         db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
-
     db.setHostName("localhost");//指定数据库服务器名称
     db.setDatabaseName("house"); //连接一个已存在的数据
     db.setUserName("root");      //设置登录名
@@ -40,7 +32,7 @@ bool queryLesseeNumber(int *count)
 
     QSqlQuery query; //定义一个QSqlQuery 类型的变量
 
-    query.exec("select * from lesseeInfo");
+    query.exec("select * from customer");
     *count=query.size();
 
     //close connection
@@ -50,9 +42,7 @@ bool queryLesseeNumber(int *count)
     //qDebug()<<"connection closed.";
     return true;
 }
-
-
-bool queryLesseeInfo(customer *li)
+bool queryCustomerInfo(CustomerInfo *ci)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -60,7 +50,6 @@ bool queryLesseeInfo(customer *li)
         db=QSqlDatabase::database("qt_sql_default_connection");
     else
         db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
-
     db.setHostName("localhost");//指定数据库服务器名称
     db.setDatabaseName("house"); //连接一个已存在的数据
     db.setUserName("root");      //设置登录名
@@ -80,20 +69,25 @@ bool queryLesseeInfo(customer *li)
 
     int num=0;
     while (query.next()) {
-        li[num].customerId=query.value(0).toInt();
-        li[num].customerName=query.value(3).toString();
-        li[num].idCard=query.value(2).toString();
-        li[num].phoneNumber=query.value(7).toString();
-        li[num].idCard=query.value(6).toString();
-        li[num].number=query.value(14).toInt();
-        li[num].sex=query.value(4).toInt();
-        li[num].remark=query.value(15).toString();
+        ci[num].CustomerId=query.value(0).toInt();
+        ci[num].Name=query.value(3).toString();
+        ci[num].Address=query.value(14).toString();
+        ci[num].Telephone=query.value(6).toString();
+        ci[num].Sex=query.value(2).toString();
+        ci[num].IdCard=query.value(7).toString();
+
+        ci[num].Number=query.value(4).toInt();
+       // ri[num].price=query.value(8).toInt();
+        ci[num].Remark=query.value(15).toString();
+
+
         num++;
     }
     return true;
 }
 
-bool insertLesseeInfo(customer li,int *maxIndex_le)
+
+bool insertCustomerInfo(CustomerInfo ci,int *maxIndex)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -101,12 +95,10 @@ bool insertLesseeInfo(customer li,int *maxIndex_le)
         db=QSqlDatabase::database("qt_sql_default_connection");
     else
         db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
-
     db.setHostName("localhost");//指定数据库服务器名称
     db.setDatabaseName("house"); //连接一个已存在的数据
     db.setUserName("root");      //设置登录名
     db.setPassword("root"); //设置登录密码
-
 
     if (db.open()) {//打开数据库连接
         ;//qDebug()<<"database is established!";
@@ -119,24 +111,25 @@ bool insertLesseeInfo(customer li,int *maxIndex_le)
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
     query.prepare("insert into customer "
-                  "(customerId,customerName,sex,nativePlace,phoneNumber,"
-                  "idCard,number,remark) "
-                  "values(:customerId,:customerName,:sex,:nativePlace,:phoneNumber,"
-                  ":Idcard,:number,:remark)");
+                  "(customerId,customerName,nativePlace,phoneNumber,"
+                  "sex,idCard,number,remark) "
+                  "values(:customerId,:customerName,:nativePlace,:phoneNumber,"
+                  ":sex,:idCard,:number,:remark)");
 
     //将数据绑定到指定的位置
-    query.bindValue(":customerId", li.customerId);
-    query.bindValue(":customerName", li.customerName);
-    query.bindValue(":sex",li.sex);
-    query.bindValue(":idCard", li.idCard);
-    query.bindValue(":nativePlace", li.nativePlace);
-    query.bindValue(":number", li.number);
-    query.bindValue(":phoneNumber", li.phoneNumber);
-    query.bindValue(":remark", li.remark);
+    query.bindValue(":customerId", ci.CustomerId);
+    query.bindValue(":customerName", ci.Name);
+    query.bindValue(":sex", ci.Sex);
+    query.bindValue(":idCard", ci.IdCard);
+    query.bindValue(":phoneNumber", ci.Telephone);
+    query.bindValue(":nativePlace", ci.Address);
+    query.bindValue(":number", ci.Number);
+   // query.bindValue(":fridge", ri.ratingNum);
+    query.bindValue(":remark", ci.Remark);
 
-    //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
+    //qDebug()<<ci.CustomerId<<ci.Name<<ci.Sex<<ci.IdCard<<ci.Telephone<<ci.Address<<ci.Floor<<ci.Remark;
     if (query.exec()) {
-        *maxIndex_le = *maxIndex_le + 1;
+        *maxIndex = *maxIndex + 1;
         return true;
     }
     else{
@@ -144,21 +137,18 @@ bool insertLesseeInfo(customer li,int *maxIndex_le)
     }
 }
 
-bool updateLesseeInfo(customer li)
+bool updateCustomerInfo(CustomerInfo ci)
 {
     //check connection exist or not
     QSqlDatabase db;
     if (QSqlDatabase::contains("qt_sql_default_connection"))
         db=QSqlDatabase::database("qt_sql_default_connection");
     else
-        //D:\Qt\MyQt\house\le_connectdatabase.h:152: error: multiple definition of `temp'
-
-    db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
+        db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
     db.setHostName("localhost");//指定数据库服务器名称
     db.setDatabaseName("house"); //连接一个已存在的数据
     db.setUserName("root");      //设置登录名
     db.setPassword("root"); //设置登录密码
-
 
     if (db.open()) {//打开数据库连接
         ;//qDebug()<<"database is established!";
@@ -172,25 +162,28 @@ bool updateLesseeInfo(customer li)
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
     query.prepare("update `customer` set "
                   "`customerId`=:customerId,"
-                  "`customerName`=:customerName,"
+                  "`customerName`=:Name,"
                   "`sex`=:sex,"
-                  "`nativePlace`=:nativePlace,"
-                  "`phoneNumber`=:phoneNumber,"
                   "`idCard`=:idCard,"
+                  "`phoneNumber`=:phoneNumber,"
+                  "`nativePlace`=:nativePlace,"
                   "`number`=:number,"
                   "`remark`=:remark "
-                  "where `customerId`=:customerId") ;
+                  "where `customerId`=:customerId");
+
 
     //将数据绑定到指定的位置
-    query.bindValue(":customerId", li.customerId);
-    query.bindValue(":customerName", li.customerName);
-    query.bindValue(":sex",li.sex);
-    query.bindValue(":idCard", li.idCard);
-    query.bindValue(":nativePlace", li.nativePlace);
-    query.bindValue(":number", li.number);
-    query.bindValue(":phoneNumber", li.phoneNumber);
-    query.bindValue(":remark", li.remark);
+    query.bindValue(":customerId", ci.CustomerId);
+    query.bindValue(":customerName", ci.Name);
+    query.bindValue(":sex", ci.Sex);
+    query.bindValue(":idCard", ci.IdCard);
+    query.bindValue(":phoneNumber", ci.Telephone);
+    query.bindValue(":nativePlace", ci.Address);
+    query.bindValue(":number", ci.Number);
+   // query.bindValue(":fridge", ri.ratingNum);
+    query.bindValue(":remark", ci.Remark);
 
+    //qDebug()<<ci.CustomerId<<ci.Name<<ci.Sex<<ci.IdCard<<ci.Telephone<<ci.Address<<ci.Floor<<ci.Remark;
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
     if (query.exec())
         return true;
@@ -198,7 +191,7 @@ bool updateLesseeInfo(customer li)
         return false;
 }
 
-bool deleteLesseeInfo(customer li)
+bool deletCustomerInfo(CustomerInfo ci)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -206,7 +199,6 @@ bool deleteLesseeInfo(customer li)
         db=QSqlDatabase::database("qt_sql_default_connection");
     else
         db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
-
     db.setHostName("localhost");//指定数据库服务器名称
     db.setDatabaseName("house"); //连接一个已存在的数据
     db.setUserName("root");      //设置登录名
@@ -226,16 +218,16 @@ bool deleteLesseeInfo(customer li)
                   "where `customerId`=:customerId") ;
 
     //将数据绑定到指定的位置
-    query.bindValue(":customerId", li.customerId);
+    query.bindValue(":customerId", ci.CustomerId);
 
+    //qDebug()<<ci.CustomerId<<ci.Name<<ci.Sex<<ci.IdCard<<ci.Telephone<<ci.Address<<ci.Floor<<ci.Remark;
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
     if (query.exec())
         return true;
     else
         return false;
 }
-
-bool searchLesseeInfo(int customerId)
+bool searchCustomerInfo(int CustomerId)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -243,7 +235,6 @@ bool searchLesseeInfo(int customerId)
         db=QSqlDatabase::database("qt_sql_default_connection");
     else
         db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
-
     db.setHostName("localhost");//指定数据库服务器名称
     db.setDatabaseName("house"); //连接一个已存在的数据
     db.setUserName("root");      //设置登录名
@@ -262,26 +253,29 @@ bool searchLesseeInfo(int customerId)
     query.prepare("select * from `customer` where `customerId`=:customerId") ;
 
     //将数据绑定到指定的位置
-    query.bindValue(":customerId", customerId);
+    query.bindValue(":customerId", CustomerId);
     query.exec();
-    //qDebug()<<customerId;
+    //qDebug()<<roomId;
     if (!query.isActive()) {
         return false;
     }
     else {
         while (query.next()) {
-            temp_le.customerId=query.value(0).toInt();
-            temp_le.customerName=query.value(3).toString();
-            temp_le.idCard=query.value(2).toString();
-            temp_le.phoneNumber=query.value(7).toString();
-            temp_le.idCard=query.value(6).toString();
-            temp_le.number=query.value(14).toInt();
-            temp_le.sex=query.value(4).toInt();
-            temp_le.remark=query.value(15).toString();
-            //qDebug()<<temp.zuhuId;
+            temp1.CustomerId=query.value(0).toInt();
+            // temp.Customer=query.value(3).toString();
+            temp1.Name=query.value(10).toString();
+            temp1.Address=query.value(8).toString();
+            temp1.Telephone=query.value(14).toString();
+            temp1.Sex=query.value(7).toString();
+            temp1.IdCard=query.value(6).toString();
+
+            temp1.Number=query.value(4).toInt();
+            temp1.Remark=query.value(15).toString();
+
+                        //qDebug()<<temp.CustomerId;
             return true;
         }
         return true;
     }
 }
-#endif
+#endif // CONNECTDBC_H

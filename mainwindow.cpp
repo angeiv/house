@@ -3,8 +3,13 @@
 #include "housedata.h"
 #include "bookrentals.h"
 #include "replay.h"
-#include "rentingdata.h"
+#include "customer.h"
 #include "housesatisfaction.h"
+#include "tongji.h"
+#include "contract.h"
+#include "lessee.h"
+#include "sentwindow.h"
+#include "lesseedata.h"
 
 #include "qdesktopwidget.h"
 #include "qdatetime.h"
@@ -83,12 +88,42 @@ void MainWindow::on_btnReplay_clicked()
 
 void MainWindow::on_btnUser_clicked()
 {
-    rentingdata *rt = new rentingdata();
-    rt->show();
+    Customer *cs = new Customer();
+    cs->show();
 }
 
 void MainWindow::on_btnHouse_clicked()
 {
     housesatisfaction *hf = new housesatisfaction();
     hf->show();
+}
+
+void MainWindow::on_btnRent_clicked()
+{
+    tongji *tj = new tongji();
+    tj->show();
+}
+
+void MainWindow::on_btnContract_clicked()
+{
+    contract *ct = new contract();
+    ct->show();
+}
+
+void MainWindow::on_btnLessee_2_clicked()
+{
+    lessee *le = new lessee();
+    le->show();
+}
+
+void MainWindow::on_btnUserInfo_clicked()
+{
+    sentwindow *sw = new sentwindow();
+    sw->show();
+}
+
+void MainWindow::on_btnLessee_clicked()
+{
+    lesseedata *ld = new lesseedata();
+    ld->show();
 }

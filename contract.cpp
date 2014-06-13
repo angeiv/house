@@ -6,9 +6,16 @@ contract::contract(QWidget *parent) :
     ui(new Ui::contract)
 {
     ui->setupUi(this);
+    ui->dateEdit->setDate(QDate::currentDate());
+    ui->dateEdit_2->setDate(QDate::currentDate());
 }
 
 contract::~contract()
 {
     delete ui;
+}
+
+void contract::on_btnClose_clicked()
+{
+    this->close();
 }

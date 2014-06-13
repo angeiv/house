@@ -31,7 +31,7 @@
    <widget class="QPushButton" name="btnBook">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>160</x>
       <y>30</y>
       <width>91</width>
       <height>51</height>
@@ -41,49 +41,10 @@
      <string>预定</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnAdd">
-    <property name="geometry">
-     <rect>
-      <x>140</x>
-      <y>30</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>添加求组客户</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnCol">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>30</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>收取定金</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnClear">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>30</y>
-      <width>91</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>清空重填</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnClose">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>340</x>
       <y>30</y>
       <width>91</width>
       <height>51</height>
@@ -111,9 +72,6 @@
    </widget>
    <zorder>frame</zorder>
    <zorder>btnBook</zorder>
-   <zorder>btnAdd</zorder>
-   <zorder>btnCol</zorder>
-   <zorder>btnClear</zorder>
    <zorder>btnClose</zorder>
   </widget>
   <widget class="QScrollArea" name="scrollArea">
@@ -359,26 +317,6 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_BookOpendata">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>100</y>
-       <width>113</width>
-       <height>21</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit_BookData">
-     <property name="geometry">
-      <rect>
-       <x>380</x>
-       <y>140</y>
-       <width>113</width>
-       <height>21</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_12">
      <property name="geometry">
       <rect>
@@ -390,6 +328,52 @@
      </property>
      <property name="text">
       <string>天</string>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>100</y>
+       <width>110</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="dateTime">
+      <datetime>
+       <hour>0</hour>
+       <minute>0</minute>
+       <second>0</second>
+       <year>2014</year>
+       <month>1</month>
+       <day>1</day>
+      </datetime>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QDateEdit" name="dateEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>140</y>
+       <width>110</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="dateTime">
+      <datetime>
+       <hour>0</hour>
+       <minute>0</minute>
+       <second>0</second>
+       <year>2014</year>
+       <month>1</month>
+       <day>1</day>
+      </datetime>
+     </property>
+     <property name="calendarPopup">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

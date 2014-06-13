@@ -1,13 +1,13 @@
 #include "lesseedata.h"
 #include "ui_lesseedata.h"
 #include "le_connectdatabase.h"
-#include "lesseeInfo.h"
+#include "le_customer.h"
 #include <QMessageBox>//add message box
 
-int currentIndex=0;//当前查询的位置
-int maxIndex=0;//查询的最大结果
-bool searchStatus = false;//search status
-int operateNum=0;//which operate,add,alter
+int currentIndex_le=0;//当前查询的位置
+int maxIndex_le=0;//查询的最大结果
+bool searchStatus_le = false;//search status
+int operateNum_le=0;//which operate,add,alter
 
 //##############################################################################################//
 
@@ -21,7 +21,7 @@ void lesseedata::setLineEditEnabled()
     ui->lineEdit_ManNum->setReadOnly(false);
     ui->lineEdit_Name->setReadOnly(false);
     ui->lineEdit_Num->setReadOnly(false);
-    ui->lineEdit_Remakr->setReadOnly(false);
+    ui->textEdit->setReadOnly(false);
     ui->lineEdit_TeL->setReadOnly(false);
     ui->lineEdit_WorkPlace->setReadOnly(false);
 }
@@ -36,7 +36,7 @@ void lesseedata::setLineEditDisabled()
     ui->lineEdit_ManNum->setReadOnly(false);
     ui->lineEdit_Name->setReadOnly(false);
     ui->lineEdit_Num->setReadOnly(false);
-    ui->lineEdit_Remakr->setReadOnly(false);
+    ui->textEdit->setReadOnly(false);
     ui->lineEdit_TeL->setReadOnly(false);
     ui->lineEdit_WorkPlace->setReadOnly(false);
 
@@ -46,29 +46,31 @@ void lesseedata::setLesseeInformation(int index)
 {
 
     //index
-    currentIndex=index;
+    currentIndex_le=index;
 
     index=index-1;//lessee no.
 
     //set lessee information
-    ui->lineEdit_IdCardNo->setText(QString::number(li[index].Idcard));
-    ui->lineEdit_ManNum->setText(QString::number(li[index].toll));
-    ui->lineEdit_Name->setText(li[index].zuhuname);
-    ui->lineEdit_Num->setText(QString::number(li[index].zuhuId));
-    ui->lineEdit_Remakr->setText(li[index].remark);
-    ui->lineEdit_TeL->setText(QString::number(li[index].telephone));
-    ui->lineEdit_WorkPlace->setText(li[index].worklocation);
+    ui->lineEdit_IdCardNo->setText(li[index].idCard);
+    ui->lineEdit_ManNum->setText(QString::number(li[index].number));
+    ui->lineEdit_Name->setText(li[index].customerName);
+    ui->lineEdit_Num->setText(QString::number(li[index].customerId));
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //ui->lineEdit_Remakr->setText(li[index].remark);
+    ui->lineEdit_TeL->setText(li[index].phoneNumber);
+    ui->lineEdit_WorkPlace->setText(li[index].nativePlace);
 
 }
 
 void lesseedata::setLesseeInfoNone()
 {
-    //set room information
+    //set lessee information
     ui->lineEdit_IdCardNo->setText(NULL);
     ui->lineEdit_ManNum->setText(NULL);
     ui->lineEdit_Name->setText(NULL);
     ui->lineEdit_Num->setText(NULL);
-    ui->lineEdit_Remakr->setText(NULL);
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //ui->lineEdit_Remakr->setText(NULL);
     ui->lineEdit_TeL->setText(NULL);
     ui->lineEdit_WorkPlace->setText(NULL);
     ui->comboBoxGender->setCurrentIndex(0);
@@ -78,13 +80,22 @@ void lesseedata::setLesseeInfoNone()
 
 void lesseedata::getLesseeInfo(int index)
 {
-    li[index].zuhuId=ui->lineEdit_Num->text().toInt();
-    li[index].zuhuname=ui->lineEdit_Name->text();
-    li[index].worklocation=ui->lineEdit_WorkPlace->text();
-    li[index].telephone=ui->lineEdit_TeL->text().toInt();
-    li[index].Idcard=ui->lineEdit_IdCardNo->text.toInt();
-    li[index].toll=ui->lineEdit_ManNum->text().toInt();
-    li[index].remark=ui->lineEdit_Remakr->toPlainText();
+    li[index].customerId=ui->lineEdit_Num->text().toInt();
+    li[index].customerName=ui->lineEdit_Name->text();
+    li[index].nativePlace=ui->lineEdit_WorkPlace->text();
+    li[index].phoneNumber=ui->lineEdit_TeL->text();
+
+
+
+    //D:\Qt\MyQt\house\le_connectdatabase.h:152: error: multiple definition of `temp'
+    li[index].idCard=ui->lineEdit_IdCardNo->text();
+    li[index].number=ui->lineEdit_ManNum->text().toInt();
+
+
+
+    //D:\Qt\MyQt\house\le_connectdatabase.h:152: error: multiple definition of `temp'
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //li[index].remark=ui->lineEdit_Remakr->text();
     //qDebug()<<ri[maxIndex].roomId<<ri[maxIndex].roomType<<ri[maxIndex].floor;
 }
 
@@ -98,15 +109,15 @@ lesseedata::lesseedata(QWidget *parent) :
 
     ui->btnDelte->setEnabled(false);
     //result number
-    queryLesseeNumber(&maxIndex);
+    queryLesseeNumber(&maxIndex_le);
     ui->lineEdit->clear();
-    ui->lineEdit->setText(QString::number(maxIndex));
+    ui->lineEdit->setText(QString::number(maxIndex_le));
 
     //set read only
     setLineEditDisabled();
 
     //get all lessee informations
-    queryRoomInfo(li);
+    queryLesseeInfo(li);
 }
 
 lesseedata::~lesseedata()
@@ -125,7 +136,7 @@ void lesseedata::on_pushButton_Close_clicked()
 void lesseedata::on_btnAdd_clicked()
 {
     //添加
-    operateNum = 1;
+    operateNum_le = 1;
     ui->btnSave->setEnabled(true);
     ui->btnCanel->setEnabled(true);
 
@@ -143,7 +154,7 @@ void lesseedata::on_btnAdd_clicked()
 void lesseedata::on_btnChange_clicked()
 {
     //修改
-    operateNum = 2;
+    operateNum_le = 2;
     ui->btnSave->setEnabled(true);
     ui->btnCanel->setEnabled(true);
 
@@ -166,10 +177,10 @@ void lesseedata::on_btnDelte_clicked()
         //msgbox
         //16384 == yes,65536 == no
         //delete in db
-        if(deleteLesseeInfo(ri[currentIndex - 1])) {
+        if(deleteLesseeInfo(li[currentIndex_le - 1])) {
             QMessageBox::about(NULL,"tips","delete complete");
             //shuzu xiangguan yidong
-            deleteOneLesseeInfo(li,currentIndex,&maxIndex);
+            deleteOneLesseeInfo(li,currentIndex_le,&maxIndex_le);
 
             //ui->lineEditCount->setText(QString::number(maxIndex));
             //queryRoomInfo(ri);
@@ -191,17 +202,17 @@ void lesseedata::on_btnSave_clicked()
     //保存
     bool status = 1;
     //some db operate
-    switch (operateNum) {
+    switch (operateNum_le) {
     case 2:
         //修改
-        getLesseeInfo(currentIndex-1);
-        status = updateLesseeInfo(li[currentIndex-1]);
+        getLesseeInfo(currentIndex_le-1);
+        status = updateLesseeInfo(li[currentIndex_le-1]);
         break;
     case 1:
         //添加
-        getLesseeInfo(maxIndex);
-        status = insertLesseeInfo(li[maxIndex],&maxIndex);
-        ui->lineEdit->setText(QString::number(maxIndex));
+        getLesseeInfo(maxIndex_le);
+        status = insertLesseeInfo(li[maxIndex_le],&maxIndex_le);
+        ui->lineEdit->setText(QString::number(maxIndex_le));
         //msgbox
         break;
     default:
@@ -220,7 +231,7 @@ void lesseedata::on_btnSave_clicked()
 
     setLineEditDisabled();
     ui->lineEdit_Num->setEnabled(true);
-    operateNum = 0;
+    operateNum_le = 0;
 }
 
 
@@ -245,7 +256,7 @@ void lesseedata::on_btnFirst_clicked()
 {
     //第一条
     setLesseeInformation(1);
-    currentIndex = 1;
+    currentIndex_le = 1;
     ui->btnDelte->setEnabled(true);
 }
 
@@ -253,12 +264,12 @@ void lesseedata::on_btnBefore_clicked()
 {
     //前一条
     ui->btnDelte->setEnabled(true);
-    if (currentIndex <= 1) {
+    if (currentIndex_le <= 1) {
         QMessageBox::about(this,tr("tips"),tr("already the first one"));
     }
     else {
-        currentIndex = currentIndex - 1;
-        setLesseeInformation(currentIndex);
+        currentIndex_le = currentIndex_le - 1;
+        setLesseeInformation(currentIndex_le);
     }
 }
 
@@ -266,12 +277,12 @@ void lesseedata::on_btnLate_clicked()
 {
     //后一条
     ui->btnDelte->setEnabled(true);
-    if (currentIndex >= maxIndex) {
+    if (currentIndex_le >= maxIndex_le) {
         QMessageBox::about(this,tr("tips"),tr("already the last one"));
     }
     else {
-        currentIndex = currentIndex + 1;
-        setLesseeInformation(currentIndex);
+        currentIndex_le = currentIndex_le + 1;
+        setLesseeInformation(currentIndex_le);
     }
 }
 
@@ -279,8 +290,8 @@ void lesseedata::on_btnLast_clicked()
 {
     //最后一条
     ui->btnDelte->setEnabled(true);
-    setLesseeInformation(maxIndex);
-    currentIndex = maxIndex;
+    setLesseeInformation(maxIndex_le);
+    currentIndex_le = maxIndex_le;
 }
 
 
@@ -289,38 +300,41 @@ void lesseedata::on_btnLast_clicked()
 void lesseedata::on_btnCheck_clicked()
 {
     //查找
-    if (!searchStatus) {
+    if (!searchStatus_le) {
         setLineEditDisabled();
         setLesseeInfoNone();
         ui->lineEdit_Num->setReadOnly(false);
-        searchStatus = true;
+        searchStatus_le = true;
         QMessageBox::about(NULL,"tips","please input zuhuID");
         //text
     }
     else {
-        int zuhuId;
-        roomId=ui->lineEdit_Num->text().toInt();
+        int customerId;
+        customerId=ui->lineEdit_Num->text().toInt();
         //qDebug()<<zuhuId;
         //connect db and search
 
-        if (searchLesseeInfo(zuhuId)) {
+        if (searchLesseeInfo(customerId)) {
             //show lessee info
 
             //set lessee information
-            ui->lineEdit_IdCardNo->setText(QString::number(temp.Idcard));
-            ui->lineEdit_ManNum->setText(QString::number(temp.toll));
-            ui->lineEdit_Name->setText(temp.zuhuname);
-            ui->lineEdit_Num->setText(QString::number(temp.zuhuId));
-            ui->lineEdit_Remakr->setText(temp.remark);
-            ui->lineEdit_TeL->setText(QString::number(temp.telephone));
-            ui->lineEdit_WorkPlace->setText(temp.worklocation);
+            ui->lineEdit_IdCardNo->setText(temp_le.idCard);
+            ui->lineEdit_ManNum->setText(QString::number(temp_le.number));
+            ui->lineEdit_Name->setText(temp_le.customerName);
+            ui->lineEdit_Num->setText(QString::number(temp_le.customerId));
+
+
+            //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            //ui->lineEdit_Remakr->setText(temp_le.remark);
+            ui->lineEdit_TeL->setText(temp_le.phoneNumber);
+            ui->lineEdit_WorkPlace->setText(temp_le.nativePlace);
 
 
             //some no result ==> msgbox
             //setLesseeInformation(currentIndex);
             ui->lineEdit_Num->setReadOnly(true);
             setLineEditDisabled();
-            searchStatus = false;
+            searchStatus_le = false;
 
             QMessageBox::about(NULL,"tips","search over,info are below");
         }

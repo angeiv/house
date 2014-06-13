@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>求组统计</string>
   </property>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
@@ -24,7 +24,7 @@
    </property>
    <column>
     <property name="text">
-     <string>求组客户编号</string>
+     <string>求租客户编号</string>
     </property>
    </column>
    <column>

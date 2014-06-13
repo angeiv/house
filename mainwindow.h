@@ -39,6 +39,16 @@ private slots:
 
     void on_btnHouse_clicked();
 
+    void on_btnRent_clicked();
+
+    void on_btnContract_clicked();
+
+    void on_btnLessee_2_clicked();
+
+    void on_btnUserInfo_clicked();
+
+    void on_btnLessee_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *labelText;
