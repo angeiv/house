@@ -15,6 +15,11 @@ public:
     explicit bookRentals(QWidget *parent = 0);
     ~bookRentals();
 
+private slots:
+    void on_btnClose_clicked();
+
+    void on_btnEarnestMoney_clicked();
+
 private:
     Ui::bookRentals *ui;
 };

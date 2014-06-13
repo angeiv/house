@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>housesatisfaction</class>
+ <widget class="QDialog" name="housesatisfaction">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>631</width>
+    <height>446</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidgetRoom">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>591</width>
+     <height>411</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>所有房屋资料</string>
+    </attribute>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>581</width>
+       <height>181</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>271</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>房屋编号</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>数量</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QGroupBox" name="boxSelectSort_2">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>270</y>
+       <width>201</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>选择排序方式</string>
+     </property>
+     <widget class="QPushButton" name="btnSort">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>40</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>排序</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>71</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>房屋编号</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_3">
+    <attribute name="title">
+     <string>已出租房屋资料</string>
+    </attribute>
+    <widget class="QGroupBox" name="boxSelectSort">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>270</y>
+       <width>201</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>选择排序方式</string>
+     </property>
+     <widget class="QPushButton" name="btnSort_2">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>40</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>排序</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comoBox_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>71</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>房屋编号</string>
+       </property>
+      </item>
+     </widget>
+     <zorder>btnSort_2</zorder>
+     <zorder>comoBox_2</zorder>
+     <zorder>btnSort_2</zorder>
+     <zorder>comoBox_2</zorder>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget11">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>581</width>
+       <height>181</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_21">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>271</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>房屋编号</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>数量</string>
+      </property>
+     </column>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>未出租房屋资料</string>
+    </attribute>
+    <widget class="QTableWidget" name="tableWidget_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>271</width>
+       <height>181</height>
+      </rect>
+     </property>
+     <column>
+      <property name="text">
+       <string>房屋编号</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>数量</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget_6">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>581</width>
+       <height>181</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="boxSelectSort_3">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>270</y>
+       <width>201</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>选择排序方式</string>
+     </property>
+     <widget class="QPushButton" name="btnSort_3">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>40</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>排序</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>69</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>房屋编号</string>
+       </property>
+      </item>
+     </widget>
+    </widget>
+    <zorder>tableWidget_5</zorder>
+    <zorder>tableWidget_6</zorder>
+    <zorder>boxSelectSort_3</zorder>
+    <zorder>tableWidget_6</zorder>
+   </widget>
+  </widget>
+  <zorder>tabWidgetRoom</zorder>
+  <zorder>tableWidget_4</zorder>
+  <zorder>boxSelectSort_2</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

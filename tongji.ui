@@ -22,11 +22,6 @@
      <height>211</height>
     </rect>
    </property>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
    <column>
     <property name="text">
      <string>收费编号</string>
@@ -113,11 +108,6 @@
      <height>181</height>
     </rect>
    </property>
-   <row>
-    <property name="text">
-     <string/>
-    </property>
-   </row>
    <column>
     <property name="text">
      <string>收费编号</string>

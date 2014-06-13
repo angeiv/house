@@ -9,7 +9,7 @@ struct roomInfo
     int renterId;//fangdong
     int area;
     int realNum;//shiyong mianji
-    QString ratingNum;//weixiu zhuangtai  db air
+    QString ratingNum;//zhuangxiu zhuangkuang  db fridge
     int price;
     int floor;//出租状态
     QString remark;
@@ -18,8 +18,7 @@ struct roomInfo
 void deleteOneRoomInfo(roomInfo *ri,int currentIndex,int *maxIndex)
 {
     int num = currentIndex;
-    while(num >= *maxIndex)
-    {
+    while (num >= *maxIndex) {
         ri[num - 1] = ri[num];
         num = num + 1;
     }
