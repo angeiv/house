@@ -7,6 +7,7 @@
 int currentIndex=0;//当前查询的位置
 int maxIndex=0;//查询的最大结果
 bool searchStatus = false;//search status
+int operateNum=0;//which operate,add,alter
 
 void housedata::setLineEditEnabled()
 {
@@ -79,6 +80,12 @@ void housedata::setRoomInfoNone()
     setLineEditDisabled();
 }
 
+void housedata::getRoomInfo()
+{
+    ri[maxIndex].roomId=ui->lineEditRoomId->text().toInt();
+    ri[maxIndex].location=ui->lineEditLocation->text();
+}
+
 housedata::housedata(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::housedata)
@@ -117,14 +124,17 @@ void housedata::on_btnFirst_clicked()
 
 void housedata::on_btnAdd_clicked()
 {
+    operateNum = 1;
     ui->btnSave->setEnabled(true);
     ui->btnClose->setEnabled(true);
 
+    setRoomInfoNone();
     setLineEditEnabled();
 }
 
 void housedata::on_btnAlter_clicked()
 {
+    operateNum = 2;
     ui->btnSave->setEnabled(true);
     ui->btnClose->setEnabled(true);
 
@@ -133,8 +143,14 @@ void housedata::on_btnAlter_clicked()
 
 void housedata::on_btnDelete_clicked()
 {
-    ui->btnSave->setEnabled(true);
-    ui->btnClose->setEnabled(true);
+    //QMessageBox
+    if(16384 == QMessageBox::question(NULL,"question","are you sure?",
+                          QMessageBox::Yes|QMessageBox::No,QMessageBox::Yes) )
+        //msgbox
+        //16384 == yes,65536 == no
+        QMessageBox::about(NULL,"tips","delete complete");
+
+    //delete in db
 }
 
 void housedata::on_btnClose_clicked()
@@ -147,12 +163,28 @@ void housedata::on_btnClose_clicked()
 
 void housedata::on_btnSave_clicked()
 {
+    //some db operate
+    switch (operateNum) {
+    case 2:
+        //alter
+        break;
+    case 1:
+        //add
+        getRoomInfo();
+        insertRoomInfo(ri[maxIndex],&maxIndex);
+        ui->lineEditCount->setText(QString::number(maxIndex));
+        //msgbox
+        break;
+    default:
+        break;
+    }
         QMessageBox::about(this,tr("tips"),tr("save success"));
 
         ui->btnClose->setEnabled(false);
         ui->btnSave->setEnabled(false);
 
         setLineEditDisabled();
+        operateNum = 0;
 }
 
 void housedata::on_btnLatter_clicked()
@@ -191,13 +223,14 @@ void housedata::on_btnSearch_clicked()
     setRoomInfoNone();
     ui->lineEditRoomId->setReadOnly(false);
     searchStatus = true;
+    QMessageBox::about(NULL,"tips","please input roomID");
     //text
     }
     else
     {
         QString roomId;
         roomId=ui->lineEditRoomId->text();
-        qDebug()<<roomId;
+        //qDebug()<<roomId;
         //connect db and search
         currentIndex = currentIndex;//index
         //show room info
@@ -206,5 +239,8 @@ void housedata::on_btnSearch_clicked()
         ui->lineEditRoomId->setReadOnly(true);
         setLineEditDisabled();
         searchStatus = false;
+
+        QMessageBox::about(NULL,"tips","search over,info are below");
+
     }
 }

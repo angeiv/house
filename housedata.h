@@ -46,6 +46,7 @@ private:
     void setLineEditDisabled();
     void setRoomInformation(int);//set the no.x room info
     void setRoomInfoNone();//clear the info given
+    void getRoomInfo();//get room info to struct
 };
 
 

@@ -94,6 +94,57 @@ bool queryRoomInfo(roomInfo *ri)
     return true;
 }
 
+bool insertRoomInfo(roomInfo ri,int *maxIndex)
+{
+    //check connection exist or not
+    QSqlDatabase db;
+    if(QSqlDatabase::contains("qt_sql_default_connection"))
+        db=QSqlDatabase::database("qt_sql_default_connection");
+    else
+        db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
+    db.setHostName("localhost");//指定数据库服务器名称
+    db.setDatabaseName("house"); //连接一个已存在的数据
+    db.setUserName("root");      //设置登录名
+    db.setPassword("root"); //设置登录密码
+
+    if(db.open()) //打开数据库连接
+    {
+        ;//qDebug()<<"database is established!";
+    }
+    else
+    {
+        qDebug()<<"build error!";
+        return false;
+    }
+/*
+    QSqlQuery query;
+    //设置将要执行的SQL语句，并设定被绑定的数据的位置
+    query.prepare("insert into roomInfo (roomId,renterid, roomtype,"
+                  "location,realNum,area,price,fridge,remark)"
+                  "values(:roomId,:renterId,:roomType,:location,"
+                  ":realNum,:area,:price,:fridge,:remark)");
+
+    //将数据绑定到指定的位置
+    query.bindValue(":roomId", ri.roomId);
+    query.bindValue(":renterid", ri.renterId);
+    query.bindValue(":roomtype", ri.roomType);
+    query.bindValue(":location", ri.location);
+    query.bindValue(":realNum", ri.realNum);
+    query.bindValue(":area", ri.realNum);
+    query.bindValue(":price", ri.price);
+    query.bindValue(":fridge", ri.ratingNum);
+    query.bindValue(":remark", ri.remark);
+    query.exec();
+*/
+    QSqlQuery query;
+    query.prepare("insert into roomInfo(roomId,location) values(:roomId,:location)");
+    query.bindValue(":roomId",ri.roomId);
+    query.bindValue(":location",ri.location);
+    query.exec();
+    *maxIndex = *maxIndex + 1;
+    return true;
+}
+
 bool query()
 {
     QSqlQuery query; //定义一个QSqlQuery 类型的变量
