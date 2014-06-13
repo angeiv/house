@@ -15,9 +15,14 @@
 #include <QSqlRecord>
 #include "roomInfo.h"
 
-bool connectiondatabase()
+bool queryHouseNumber(int *count)
 {
-    QSqlDatabase db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
+    //check connection exist or not
+    QSqlDatabase db;
+    if(QSqlDatabase::contains("qt_sql_default_connection"))
+        db=QSqlDatabase::database("qt_sql_default_connection");
+    else
+        db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
     db.setHostName("localhost");//指定数据库服务器名称
     db.setDatabaseName("house"); //连接一个已存在的数据
     db.setUserName("root");      //设置登录名
@@ -25,43 +30,67 @@ bool connectiondatabase()
 
     if(db.open()) //打开数据库连接
     {
-        qDebug()<<"database is established!";
+        ;//qDebug()<<"database is established.";
     }
     else
     {
         qDebug()<<"build error!";
         return false;
     }
-    return true;
-}
-
-//
-bool queryHouseNumber( int *count)
-{
     QSqlQuery query; //定义一个QSqlQuery 类型的变量
 
     query.exec("select * from roomInfo");
     *count=query.size();
 
+    //close connection
+    query.clear();//清空查询语句，并释放内存空间
+    db.commit();
+    db.close();   //关闭数据库连接
+    //qDebug()<<"connection closed.";
     return true;
 }
 
-bool queryRoomInfo(roomInfo *ri,int index)
+bool queryRoomInfo(roomInfo *ri)
 {
+    //check connection exist or not
+    QSqlDatabase db;
+    if(QSqlDatabase::contains("qt_sql_default_connection"))
+        db=QSqlDatabase::database("qt_sql_default_connection");
+    else
+        db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
+    db.setHostName("localhost");//指定数据库服务器名称
+    db.setDatabaseName("house"); //连接一个已存在的数据
+    db.setUserName("root");      //设置登录名
+    db.setPassword("root"); //设置登录密码
+
+    if(db.open()) //打开数据库连接
+    {
+        ;//qDebug()<<"database is established!";
+    }
+    else
+    {
+        qDebug()<<"build error!";
+        return false;
+    }
+
     QSqlQuery query;
 
     query.exec("select * from roomInfo");
 
-    QSqlRecord record = query.record();
-/*    record.indexOf(index);
-        *ri->roomId=query.value(0).toInt();
-        ri->location=query.value(3).toString();
-        ri->roomType=query.value(2).toString();
-        ri->area=query.value(7).toInt();
-        ri->realNum=query.value(6).toInt();
-        ri->ratingNum=query.value(5).toInt();
-        ri->price=query.value(8).toInt();
-    }*/
+    int num=0;
+    while(query.next())
+    {
+        ri[num].roomId=query.value(0).toInt();
+        ri[num].location=query.value(3).toString();
+        ri[num].roomType=query.value(2).toString();
+        ri[num].area=query.value(7).toInt();
+        ri[num].realNum=query.value(6).toInt();
+        ri[num].ratingNum=query.value(14).toString();
+        ri[num].price=query.value(8).toInt();
+        ri[num].remark=query.value(15).toString();
+        ri[num].floor=query.value(4).toInt();
+        num++;
+    }
     return true;
 }
 

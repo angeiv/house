@@ -77,7 +77,7 @@
    <property name="title">
     <string>功能键</string>
    </property>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnAdd">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -90,7 +90,7 @@
      <string>添加</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="btnAlter">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -103,7 +103,7 @@
      <string>修改</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="btnDelete">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -116,7 +116,10 @@
      <string>删除</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="btnSave">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -128,8 +131,14 @@
     <property name="text">
      <string>保存</string>
     </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="btnClose">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -145,7 +154,7 @@
      <string>关闭</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="btnFirst">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -158,7 +167,7 @@
      <string>第一条</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="btnFormer">
     <property name="geometry">
      <rect>
       <x>100</x>
@@ -171,7 +180,7 @@
      <string>前一条</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="btnLatter">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -184,7 +193,7 @@
      <string>后一条</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_9">
+   <widget class="QPushButton" name="btnLast">
     <property name="geometry">
      <rect>
       <x>260</x>
@@ -197,7 +206,7 @@
      <string>最后一条</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_10">
+   <widget class="QPushButton" name="btnSearch">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -230,16 +239,16 @@
     </property>
    </widget>
    <zorder>frame</zorder>
-   <zorder>pushButton</zorder>
-   <zorder>pushButton_2</zorder>
-   <zorder>pushButton_3</zorder>
-   <zorder>pushButton_4</zorder>
-   <zorder>pushButton_5</zorder>
-   <zorder>pushButton_6</zorder>
-   <zorder>pushButton_7</zorder>
-   <zorder>pushButton_8</zorder>
-   <zorder>pushButton_9</zorder>
-   <zorder>pushButton_10</zorder>
+   <zorder>btnAdd</zorder>
+   <zorder>btnAlter</zorder>
+   <zorder>btnDelete</zorder>
+   <zorder>btnSave</zorder>
+   <zorder>btnClose</zorder>
+   <zorder>btnFirst</zorder>
+   <zorder>btnFormer</zorder>
+   <zorder>btnLatter</zorder>
+   <zorder>btnLast</zorder>
+   <zorder>btnSearch</zorder>
   </widget>
   <widget class="QPushButton" name="btnExit">
    <property name="geometry">
@@ -270,7 +279,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>40</y>
+      <y>34</y>
       <width>67</width>
       <height>31</height>
      </rect>
@@ -279,11 +288,11 @@
      <string>房屋编号</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="lineEditRoomId">
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>40</y>
+      <y>34</y>
       <width>81</width>
       <height>27</height>
      </rect>
@@ -315,7 +324,7 @@
      <string>备    注</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="lineEditRommType">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -325,7 +334,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_7">
+   <widget class="QLineEdit" name="lineEditRatingNum">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -335,7 +344,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="textEditRemark">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -345,11 +354,11 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="lineEditLocation">
     <property name="geometry">
      <rect>
       <x>250</x>
-      <y>36</y>
+      <y>30</y>
       <width>261</width>
       <height>31</height>
      </rect>
@@ -359,7 +368,7 @@
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>40</y>
+      <y>34</y>
       <width>67</width>
       <height>21</height>
      </rect>
@@ -381,7 +390,7 @@
      <string>建筑面积</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_5">
+   <widget class="QLineEdit" name="lineEditArea">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -404,7 +413,7 @@
      <string>使用面积</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_6">
+   <widget class="QLineEdit" name="lineEditRealNum">
     <property name="geometry">
      <rect>
       <x>450</x>
@@ -453,7 +462,7 @@
      <string>出租价位</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_8">
+   <widget class="QLineEdit" name="lineEditPrice">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -489,7 +498,7 @@
      <string>目前状态</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="comboBoxFloor">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -501,11 +510,17 @@
       <height>31</height>
      </rect>
     </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
+    </property>
     <property name="editable">
      <bool>true</bool>
     </property>
     <property name="currentText">
      <string>未租</string>
+    </property>
+    <property name="maxCount">
+     <number>256</number>
     </property>
     <item>
      <property name="text">
@@ -549,25 +564,25 @@
    </widget>
    <zorder>frame_3</zorder>
    <zorder>label_3</zorder>
-   <zorder>lineEdit_2</zorder>
+   <zorder>lineEditRoomId</zorder>
    <zorder>label_8</zorder>
    <zorder>label_11</zorder>
-   <zorder>lineEdit_4</zorder>
-   <zorder>lineEdit_7</zorder>
-   <zorder>textEdit</zorder>
-   <zorder>lineEdit_3</zorder>
+   <zorder>lineEditRommType</zorder>
+   <zorder>lineEditRatingNum</zorder>
+   <zorder>textEditRemark</zorder>
+   <zorder>lineEditLocation</zorder>
    <zorder>label_4</zorder>
    <zorder>label_6</zorder>
-   <zorder>lineEdit_5</zorder>
+   <zorder>lineEditArea</zorder>
    <zorder>label_7</zorder>
-   <zorder>lineEdit_6</zorder>
+   <zorder>lineEditRealNum</zorder>
    <zorder>label_12</zorder>
    <zorder>label_14</zorder>
    <zorder>label_9</zorder>
-   <zorder>lineEdit_8</zorder>
+   <zorder>lineEditPrice</zorder>
    <zorder>label_13</zorder>
    <zorder>label_10</zorder>
-   <zorder>comboBox</zorder>
+   <zorder>comboBoxFloor</zorder>
   </widget>
  </widget>
  <resources/>
