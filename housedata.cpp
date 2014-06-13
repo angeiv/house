@@ -80,10 +80,18 @@ void housedata::setRoomInfoNone()
     setLineEditDisabled();
 }
 
-void housedata::getRoomInfo()
+void housedata::getRoomInfo(int index)
 {
-    ri[maxIndex].roomId=ui->lineEditRoomId->text().toInt();
-    ri[maxIndex].location=ui->lineEditLocation->text();
+    ri[index].roomId=ui->lineEditRoomId->text().toInt();
+    ri[index].location=ui->lineEditLocation->text();
+    ri[index].roomType=ui->lineEditRommType->text();
+    ri[index].area=ui->lineEditArea->text().toInt();
+    ri[index].realNum=ui->lineEditRealNum->text().toInt();
+    ri[index].ratingNum=ui->lineEditRatingNum->text();
+    ri[index].price=ui->lineEditPrice->text().toInt();
+    ri[index].floor=0;//new foom have no cunstomer
+    ri[index].remark=ui->textEditRemark->toPlainText();
+    //qDebug()<<ri[maxIndex].roomId<<ri[maxIndex].roomType<<ri[maxIndex].floor;
 }
 
 housedata::housedata(QWidget *parent) :
@@ -92,6 +100,7 @@ housedata::housedata(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->btnDelete->setEnabled(false);
     //result number
     queryHouseNumber(&maxIndex);
     ui->lineEditCount->clear();
@@ -120,6 +129,7 @@ void housedata::on_btnFirst_clicked()
 {
     setRoomInformation(1);
     currentIndex = 1;
+    ui->btnDelete->setEnabled(true);
 }
 
 void housedata::on_btnAdd_clicked()
@@ -128,8 +138,15 @@ void housedata::on_btnAdd_clicked()
     ui->btnSave->setEnabled(true);
     ui->btnClose->setEnabled(true);
 
+    ui->btnAdd->setEnabled(false);
+    ui->btnAlter->setEnabled(false);
+    ui->btnDelete->setEnabled(false);
+
     setRoomInfoNone();
     setLineEditEnabled();
+
+    ui->comboBoxFloor->setCurrentIndex(0);
+    ui->comboBoxFloor->setEnabled(false);
 }
 
 void housedata::on_btnAlter_clicked()
@@ -138,7 +155,15 @@ void housedata::on_btnAlter_clicked()
     ui->btnSave->setEnabled(true);
     ui->btnClose->setEnabled(true);
 
+    ui->btnAdd->setEnabled(false);
+    ui->btnAlter->setEnabled(false);
+    ui->btnDelete->setEnabled(false);
+
     setLineEditEnabled();
+
+    //can not edit roomid and customer
+    ui->lineEditRoomId->setEnabled(false);
+    ui->comboBoxFloor->setEnabled(false);
 }
 
 void housedata::on_btnDelete_clicked()
@@ -146,11 +171,25 @@ void housedata::on_btnDelete_clicked()
     //QMessageBox
     if(16384 == QMessageBox::question(NULL,"question","are you sure?",
                           QMessageBox::Yes|QMessageBox::No,QMessageBox::Yes) )
+    {
         //msgbox
         //16384 == yes,65536 == no
-        QMessageBox::about(NULL,"tips","delete complete");
+        //delete in db
+        if(deleteRoomInfo(ri[currentIndex - 1]))
+        {
+            QMessageBox::about(NULL,"tips","delete complete");
+            //shuzu xiangguan yidong
+            deleteOneRoomInfo(ri,currentIndex,&maxIndex);
 
-    //delete in db
+            //ui->lineEditCount->setText(QString::number(maxIndex));
+            //queryRoomInfo(ri);
+        }
+        else
+        {
+            //delete error
+            QMessageBox::about(NULL,"tips","delete error");
+        }
+    }
 }
 
 void housedata::on_btnClose_clicked()
@@ -158,30 +197,44 @@ void housedata::on_btnClose_clicked()
     ui->btnClose->setEnabled(false);
     ui->btnSave->setEnabled(false);
 
+    ui->btnAdd->setEnabled(true);
+    ui->btnAlter->setEnabled(true);
+    ui->btnDelete->setEnabled(true);
+
     setLineEditDisabled();
+    ui->lineEditRoomId->setEnabled(true);
 }
 
 void housedata::on_btnSave_clicked()
 {
+    bool status = 1;
     //some db operate
     switch (operateNum) {
     case 2:
         //alter
+        getRoomInfo(currentIndex-1);
+        status = updateRoomInfo(ri[currentIndex-1]);
         break;
     case 1:
         //add
-        getRoomInfo();
-        insertRoomInfo(ri[maxIndex],&maxIndex);
+        getRoomInfo(maxIndex);
+        status = insertRoomInfo(ri[maxIndex],&maxIndex);
         ui->lineEditCount->setText(QString::number(maxIndex));
         //msgbox
         break;
     default:
         break;
     }
+    if(status)
         QMessageBox::about(this,tr("tips"),tr("save success"));
-
+    else
+        QMessageBox::about(this,tr("tips"),tr("some error occur"));
         ui->btnClose->setEnabled(false);
         ui->btnSave->setEnabled(false);
+
+        ui->btnAdd->setEnabled(true);
+        ui->btnAlter->setEnabled(true);
+        ui->btnDelete->setEnabled(true);
 
         setLineEditDisabled();
         operateNum = 0;
@@ -189,6 +242,7 @@ void housedata::on_btnSave_clicked()
 
 void housedata::on_btnLatter_clicked()
 {
+    ui->btnDelete->setEnabled(true);
     if(currentIndex >= maxIndex)
         QMessageBox::about(this,tr("tips"),tr("already the last one"));
     else
@@ -200,12 +254,14 @@ void housedata::on_btnLatter_clicked()
 
 void housedata::on_btnLast_clicked()
 {
+    ui->btnDelete->setEnabled(true);
     setRoomInformation(maxIndex);
     currentIndex = maxIndex;
 }
 
 void housedata::on_btnFormer_clicked()
 {
+    ui->btnDelete->setEnabled(true);
     if(currentIndex <= 1)
         QMessageBox::about(this,tr("tips"),tr("already the first one"));
     else
@@ -228,12 +284,28 @@ void housedata::on_btnSearch_clicked()
     }
     else
     {
-        QString roomId;
-        roomId=ui->lineEditRoomId->text();
+        int roomId;
+        roomId=ui->lineEditRoomId->text().toInt();
         //qDebug()<<roomId;
         //connect db and search
-        currentIndex = currentIndex;//index
+        if(searchRoomInfo(roomId))
+        {
         //show room info
+
+            //set room information
+            ui->lineEditRoomId->setText(QString::number(temp.roomId));
+            ui->lineEditLocation->setText(temp.location);
+            ui->lineEditRommType->setText(temp.roomType);
+            ui->lineEditArea->setText(QString::number(temp.area));
+            ui->lineEditRealNum->setText(QString::number(temp.realNum));
+            ui->lineEditRatingNum->setText(temp.ratingNum);
+            ui->lineEditPrice->setText(QString::number(temp.price));
+            if(QString::number(temp.floor).toInt())
+                ui->comboBoxFloor->setCurrentIndex(1);
+            else
+                ui->comboBoxFloor->setCurrentIndex(0);
+            ui->textEditRemark->setText(temp.remark);
+
         //some no result ==> msgbox
         //setRoomInformation(currentIndex);
         ui->lineEditRoomId->setReadOnly(true);
@@ -241,6 +313,9 @@ void housedata::on_btnSearch_clicked()
         searchStatus = false;
 
         QMessageBox::about(NULL,"tips","search over,info are below");
+        }
+        else
+            QMessageBox::about(NULL,"tips","search over,info not found");
 
     }
 }

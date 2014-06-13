@@ -13,6 +13,17 @@ struct roomInfo
     int price;
     int floor;//出租状态
     QString remark;
-}ri[256];
+}ri[256],temp;
+
+void deleteOneRoomInfo(roomInfo *ri,int currentIndex,int *maxIndex)
+{
+    int num = currentIndex;
+    while(num >= *maxIndex)
+    {
+        ri[num - 1] = ri[num];
+        num = num + 1;
+    }
+    *maxIndex = *maxIndex - 1;
+}
 
 #endif // ROOMINFO_H
