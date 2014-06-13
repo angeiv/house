@@ -3,14 +3,14 @@
 #include "housedata.h"
 #include "bookrentals.h"
 #include "replay.h"
-#include "customer.h"
+//#include "customer.h"
 #include "housesatisfaction.h"
 #include "tongji.h"
 #include "contract.h"
 #include "lessee.h"
 #include "sentwindow.h"
 #include "lesseedata.h"
-
+#include"rentingdata.h"
 #include "qdesktopwidget.h"
 #include "qdatetime.h"
 #include "qtimer.h"
@@ -88,7 +88,7 @@ void MainWindow::on_btnReplay_clicked()
 
 void MainWindow::on_btnUser_clicked()
 {
-    Customer *cs = new Customer();
+    rentingdata *cs = new rentingdata();
     cs->show();
 }
 

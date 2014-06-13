@@ -24,7 +24,6 @@ SOURCES += main.cpp\
     housesatisfaction.cpp \
     replay.cpp \
     lessee.cpp \
-    customer.cpp \
     lesseedata.cpp
 
 HEADERS  += mainwindow.h \
@@ -42,15 +41,17 @@ HEADERS  += mainwindow.h \
     housesa_conn.h \
     houseInfo.h \
     lessee.h \
-    connectdbc.h \
-    customer.h \
     customerinfo.h \
     rentInfo.h \
     rentInfoQuery.h \
     le_connectdatabase.h \
     le_customer.h \
     lesseedata.h \
-    lesseeInfo.h
+    lesseeInfo.h \
+    connect_wanted.h \
+    wantedinfo.h \
+    checkUser.h \
+    userInfo.h
 
 
 FORMS    += mainwindow.ui \

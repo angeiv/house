@@ -1,15 +1,14 @@
-#ifndef CONNECTDBC_H
-#define CONNECTDBC_H
+#ifndef CONNECT_WANTED_H
+#define CONNECT_WANTED_H
 #include <QSqlDatabase>
 #include <QString>
 #include <QDebug>
 #include <QSqlQuery>
 #include <QVariant>
+#include <QSqlRecord>
+#include "wantedinfo.h"
 
-#include "customerinfo.h"
-#include "login.h"
-//#include "connectdatabase.h"
-bool queryCustomerNumber(int *count)
+bool queryWantedNumber(int *count)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -32,7 +31,7 @@ bool queryCustomerNumber(int *count)
 
     QSqlQuery query; //定义一个QSqlQuery 类型的变量
 
-    query.exec("select * from customer");
+    query.exec("select * from wanted");
     *count=query.size();
 
     //close connection
@@ -42,7 +41,8 @@ bool queryCustomerNumber(int *count)
     //qDebug()<<"connection closed.";
     return true;
 }
-bool queryCustomerInfo(CustomerInfo *ci)
+
+bool queryWantedInfo(wantedInfo *wt)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -65,29 +65,29 @@ bool queryCustomerInfo(CustomerInfo *ci)
 
     QSqlQuery query;
 
-    query.exec("select * from customer");
+    query.exec("select * from wanted");
 
     int num=0;
     while (query.next()) {
-        ci[num].CustomerId=query.value(0).toInt();
-        ci[num].Name=query.value(3).toString();
-        ci[num].Address=query.value(14).toString();
-        ci[num].Telephone=query.value(6).toString();
-        ci[num].Sex=query.value(2).toString();
-        ci[num].IdCard=query.value(7).toString();
+        wt[num].customerId=query.value(0).toInt();
+                wt[num].customerName=query.value(1).toString();
+                wt[num].phoneNumber=query.value(2).toInt();
+                wt[num].roomType=query.value(3).toString();
+                wt[num].area=query.value(4).toInt();
+                wt[num].circumstance=query.value(5).toString();
+               // wt[num].area=query.value(6).toInt();
+              //  wt[num].circumstance=query.value(7).toString();
+                wt[num].price=query.value(8).toInt();
+                wt[num].roomId=query.value(8).toInt();
+                wt[num].sj=query.value(8).toInt();
+                wt[num].remark=query.value(9).toString();
 
-        ci[num].Number=query.value(4).toInt();
-       // ri[num].price=query.value(8).toInt();
-        ci[num].Remark=query.value(15).toString();
-
-
-        num++;
+                num++;
     }
     return true;
 }
 
-
-bool insertCustomerInfo(CustomerInfo ci,int *maxIndex)
+bool insertWantedInfo(wantedInfo wt,int *maxIndex)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -101,7 +101,7 @@ bool insertCustomerInfo(CustomerInfo ci,int *maxIndex)
     db.setPassword("root"); //设置登录密码
 
     if (db.open()) {//打开数据库连接
-        ;//qDebug()<<"database is established!";
+        //qDebug()<<"database is established!";
     }
     else {
         qDebug()<<"build error!";
@@ -110,24 +110,27 @@ bool insertCustomerInfo(CustomerInfo ci,int *maxIndex)
 
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
-    query.prepare("insert into customer "
-                  "(customerId,customerName,nativePlace,phoneNumber,"
-                  "sex,idCard,number,remark) "
-                  "values(:customerId,:customerName,:nativePlace,:phoneNumber,"
-                  ":sex,:idCard,:number,:remark)");
+    query.prepare("insert into wanted "
+                  "(customerName,phoneNumber,roomType,"
+                  "area,circumstance,roomId,price,sj,remark) "
+                  "values(:customerName,:phoneNumber,:roomType,:area,:circumstance,:roomId,"
+                  ":price,:sj,:remark)");
 
     //将数据绑定到指定的位置
-    query.bindValue(":customerId", ci.CustomerId);
-    query.bindValue(":customerName", ci.Name);
-    query.bindValue(":sex", ci.Sex);
-    query.bindValue(":idCard", ci.IdCard);
-    query.bindValue(":phoneNumber", ci.Telephone);
-    query.bindValue(":nativePlace", ci.Address);
-    query.bindValue(":number", ci.Number);
-   // query.bindValue(":fridge", ri.ratingNum);
-    query.bindValue(":remark", ci.Remark);
+   // query.bindValue(":customerId", wt.customerId);
+    query.bindValue(":customerName", wt.customerName);
+    query.bindValue(":phoneNumber", wt.phoneNumber);
+    query.bindValue(":roomType", wt.roomType);
+    query.bindValue(":area",wt.area);
+    query.bindValue(":circumstance", wt.circumstance);
+    query.bindValue(":price", wt.price);
+    query.bindValue(":roomId", wt.roomId);
 
-    //qDebug()<<ci.CustomerId<<ci.Name<<ci.Sex<<ci.IdCard<<ci.Telephone<<ci.Address<<ci.Floor<<ci.Remark;
+    query.bindValue(":sj",wt.sj);
+
+    query.bindValue(":remark", wt.remark);
+
+//  qDebug()<<wt.area<<wt.circumstance<<wt.remark<<wt.phoneNumber<<wt.customerName<<wt.price<<wt.roomId<<wt.sj<<wt.customerId<<wt.roomType;
     if (query.exec()) {
         *maxIndex = *maxIndex + 1;
         return true;
@@ -137,7 +140,7 @@ bool insertCustomerInfo(CustomerInfo ci,int *maxIndex)
     }
 }
 
-bool updateCustomerInfo(CustomerInfo ci)
+bool updateWantedInfo(wantedInfo wt)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -160,74 +163,77 @@ bool updateCustomerInfo(CustomerInfo ci)
 
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
-    query.prepare("update `customer` set "
-                  "`customerId`=:customerId,"
-                  "`customerName`=:Name,"
-                  "`sex`=:sex,"
-                  "`idCard`=:idCard,"
+    query.prepare("update `wanted` set "
                   "`phoneNumber`=:phoneNumber,"
-                  "`nativePlace`=:nativePlace,"
-                  "`number`=:number,"
+                  "`roomType`=:roomType,"
+                  "`area`=:area,"
+                  "`circumstance`=:circumstance,"
+                  "`price`=:price,"
+                  "`roomId`=:roomId,"
+                  "`sj`=:sj,"
+
+
+
                   "`remark`=:remark "
-                  "where `customerId`=:customerId");
-
-
-    //将数据绑定到指定的位置
-    query.bindValue(":customerId", ci.CustomerId);
-    query.bindValue(":customerName", ci.Name);
-    query.bindValue(":sex", ci.Sex);
-    query.bindValue(":idCard", ci.IdCard);
-    query.bindValue(":phoneNumber", ci.Telephone);
-    query.bindValue(":nativePlace", ci.Address);
-    query.bindValue(":number", ci.Number);
-   // query.bindValue(":fridge", ri.ratingNum);
-    query.bindValue(":remark", ci.Remark);
-
-    //qDebug()<<ci.CustomerId<<ci.Name<<ci.Sex<<ci.IdCard<<ci.Telephone<<ci.Address<<ci.Floor<<ci.Remark;
-    //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
-    if (query.exec())
-        return true;
-    else
-        return false;
-}
-
-bool deletCustomerInfo(CustomerInfo ci)
-{
-    //check connection exist or not
-    QSqlDatabase db;
-    if (QSqlDatabase::contains("qt_sql_default_connection"))
-        db=QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
-    db.setHostName("localhost");//指定数据库服务器名称
-    db.setDatabaseName("house"); //连接一个已存在的数据
-    db.setUserName("root");      //设置登录名
-    db.setPassword("root"); //设置登录密码
-
-    if (db.open()) {//打开数据库连接
-        ;//qDebug()<<"database is established!";
-    }
-    else {
-        qDebug()<<"build error!";
-        return false;
-    }
-
-    QSqlQuery query;
-    //设置将要执行的SQL语句，并设定被绑定的数据的位置
-    query.prepare("delete from `customer` "
                   "where `customerId`=:customerId") ;
 
     //将数据绑定到指定的位置
-    query.bindValue(":customerId", ci.CustomerId);
+    query.bindValue(":customerId", wt.customerId);
+    query.bindValue(":customerName", wt.customerName);
+    query.bindValue(":phoneNumber", wt.phoneNumber);
+    query.bindValue(":roomType", wt.roomType);
+    query.bindValue(":area",wt.area);
+    query.bindValue(":circumstance", wt.circumstance);
+    query.bindValue(":price", wt.price);
+    query.bindValue(":roomId", wt.roomId);
 
-    //qDebug()<<ci.CustomerId<<ci.Name<<ci.Sex<<ci.IdCard<<ci.Telephone<<ci.Address<<ci.Floor<<ci.Remark;
+    query.bindValue(":sj",wt.sj);
+
+    query.bindValue(":remark", wt.remark);
+
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
     if (query.exec())
         return true;
     else
         return false;
 }
-bool searchCustomerInfo(int CustomerId)
+
+bool deleteWantedInfo(wantedInfo wt)
+{
+    //check connection exist or not
+    QSqlDatabase db;
+    if (QSqlDatabase::contains("qt_sql_default_connection"))
+        db=QSqlDatabase::database("qt_sql_default_connection");
+    else
+        db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
+    db.setHostName("localhost");//指定数据库服务器名称
+    db.setDatabaseName("house"); //连接一个已存在的数据
+    db.setUserName("root");      //设置登录名
+    db.setPassword("root"); //设置登录密码
+
+    if (db.open()) {//打开数据库连接
+        ;//qDebug()<<"database is established!";
+    }
+    else {
+        qDebug()<<"build error!";
+        return false;
+    }
+
+    QSqlQuery query;
+    //设置将要执行的SQL语句，并设定被绑定的数据的位置
+    query.prepare("delete from `wanted` "
+                  "where `wantedNumber`=:wantedNumber") ;
+
+    //将数据绑定到指定的位置
+    query.bindValue(":wantedNumber", wt.customerId);
+
+    //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
+    if (query.exec())
+        return true;
+    else
+        return false;
+}
+bool searchWantedInfo(int customerId)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -250,10 +256,10 @@ bool searchCustomerInfo(int CustomerId)
 
     QSqlQuery query;
 
-    query.prepare("select * from `customer` where `customerId`=:customerId") ;
+    query.prepare("select * from `wanted` where `customerId`=:customerId") ;
 
     //将数据绑定到指定的位置
-    query.bindValue(":customerId", CustomerId);
+    query.bindValue(":customerId", customerId);
     query.exec();
     //qDebug()<<roomId;
     if (!query.isActive()) {
@@ -261,21 +267,23 @@ bool searchCustomerInfo(int CustomerId)
     }
     else {
         while (query.next()) {
-            temp1.CustomerId=query.value(0).toInt();
-            // temp.Customer=query.value(3).toString();
-            temp1.Name=query.value(10).toString();
-            temp1.Address=query.value(8).toString();
-            temp1.Telephone=query.value(14).toString();
-            temp1.Sex=query.value(7).toString();
-            temp1.IdCard=query.value(6).toString();
+            tem.customerId=query.value(0).toInt();
+            tem.customerName=query.value(1).toString();
+            tem.phoneNumber=query.value(2).toInt();
+            tem.roomType=query.value(3).toString();
+            tem.area=query.value(4).toInt();
+            tem.circumstance=query.value(7).toString();
+            tem.price=query.value(8).toInt();
+            tem.roomId=query.value(5).toInt();
+            tem.sj=query.value(6).toInt();
 
-            temp1.Number=query.value(4).toInt();
-            temp1.Remark=query.value(15).toString();
 
-                        //qDebug()<<temp.CustomerId;
+            tem.remark=query.value(9).toString();
+            //qDebug()<<temp.roomId;
             return true;
         }
         return true;
     }
 }
-#endif // CONNECTDBC_H
+
+#endif // CONNECT_WANTED_H
