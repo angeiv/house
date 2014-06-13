@@ -232,7 +232,7 @@
        <string>退出</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="btnHouse">
       <property name="geometry">
        <rect>
         <x>0</x>

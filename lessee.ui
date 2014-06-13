@@ -16,10 +16,10 @@
   <widget class="QTabWidget" name="tabWidget">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>40</x>
      <y>30</y>
-     <width>561</width>
-     <height>261</height>
+     <width>731</width>
+     <height>531</height>
     </rect>
    </property>
    <property name="currentIndex">
@@ -34,8 +34,8 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>551</width>
-       <height>231</height>
+       <width>731</width>
+       <height>501</height>
       </rect>
      </property>
      <column>
@@ -64,67 +64,6 @@
       </property>
      </column>
     </widget>
-   </widget>
-  </widget>
-  <widget class="QTableWidget" name="tableWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>330</y>
-     <width>411</width>
-     <height>192</height>
-    </rect>
-   </property>
-   <column>
-    <property name="text">
-     <string>租户编号</string>
-    </property>
-   </column>
-   <column>
-    <property name="text">
-     <string>数量统计</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QGroupBox" name="verticalGroupBox">
-   <property name="geometry">
-    <rect>
-     <x>480</x>
-     <y>370</y>
-     <width>221</width>
-     <height>121</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>选择排序方式</string>
-   </property>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>60</y>
-      <width>91</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>租户编号</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>50</y>
-      <width>91</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>排  序</string>
-    </property>
    </widget>
   </widget>
  </widget>

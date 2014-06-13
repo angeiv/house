@@ -4,6 +4,7 @@
 #include "bookrentals.h"
 #include "replay.h"
 #include "rentingdata.h"
+#include "housesatisfaction.h"
 
 #include "qdesktopwidget.h"
 #include "qdatetime.h"
@@ -84,4 +85,10 @@ void MainWindow::on_btnUser_clicked()
 {
     rentingdata *rt = new rentingdata();
     rt->show();
+}
+
+void MainWindow::on_btnHouse_clicked()
+{
+    housesatisfaction *hf = new housesatisfaction();
+    hf->show();
 }

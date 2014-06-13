@@ -1,6 +1,5 @@
 #include "bookrentals.h"
 #include "ui_bookrentals.h"
-#include "earnestmoney.h"
 
 bookRentals::bookRentals(QWidget *parent) :
     QDialog(parent),
@@ -21,6 +20,5 @@ void bookRentals::on_btnClose_clicked()
 
 void bookRentals::on_btnEarnestMoney_clicked()
 {
-    earnestmoney *em = new earnestmoney();
-    em->show();
+
 }

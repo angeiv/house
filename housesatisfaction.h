@@ -17,6 +17,10 @@ public:
 
 private:
     Ui::housesatisfaction *ui;
+
+    void setHouseInformation();
+    void setHouseYesInformation();//yi chu
+    void setHouseNoInformation();//wei chu
 };
 
 #endif // HOUSESATISFACTION_H

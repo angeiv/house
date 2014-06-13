@@ -77,14 +77,16 @@ bool queryRoomInfo(roomInfo *ri)
     int num=0;
     while (query.next()) {
         ri[num].roomId=query.value(0).toInt();
-        ri[num].location=query.value(3).toString();
-        ri[num].roomType=query.value(2).toString();
-        ri[num].area=query.value(7).toInt();
-        ri[num].realNum=query.value(6).toInt();
-        ri[num].ratingNum=query.value(14).toString();
+        ri[num].renterId=query.value(1).toInt();
+        ri[num].lessee=query.value(2).toInt();
+        ri[num].roomType=query.value(3).toString();
+        ri[num].location=query.value(4).toString();
+        ri[num].realNum=query.value(5).toInt();
+        ri[num].area=query.value(6).toInt();
+        ri[num].circumstance=query.value(7).toString();
         ri[num].price=query.value(8).toInt();
-        ri[num].remark=query.value(15).toString();
-        ri[num].floor=query.value(4).toInt();
+        ri[num].remark=query.value(9).toString();
+
         num++;
     }
     return true;
@@ -114,20 +116,21 @@ bool insertRoomInfo(roomInfo ri,int *maxIndex)
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
     query.prepare("insert into roomInfo "
-                  "(roomId,floor,roomtype,location,realNum,"
-                  "area,price,fridge,remark) "
-                  "values(:roomId,:floor,:roomtype,:location,:realNum,"
-                  ":area,:price,:fridge,:remark)");
+                  "(roomId,renterId,lessee,roomtype,location,realNum,"
+                  "area,circumstance,price,remark) "
+                  "values(:roomId,:renterId,:lessee,:roomtype,:location,:realNum,"
+                  ":area,:circumstance,:price,:remark)");
 
     //将数据绑定到指定的位置
     query.bindValue(":roomId", ri.roomId);
-    query.bindValue(":floor", ri.floor);
+    query.bindValue(":renterId", ri.renterId);
+    query.bindValue(":lessee", ri.lessee);
     query.bindValue(":roomtype", ri.roomType);
     query.bindValue(":location", ri.location);
     query.bindValue(":realNum", ri.realNum);
     query.bindValue(":area", ri.area);
+    query.bindValue(":circumstance", ri.circumstance);
     query.bindValue(":price", ri.price);
-    query.bindValue(":fridge", ri.ratingNum);
     query.bindValue(":remark", ri.remark);
 
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
@@ -164,25 +167,23 @@ bool updateRoomInfo(roomInfo ri)
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
     query.prepare("update `roomInfo` set "
-                  "`floor`=:floor,"
                   "`roomtype`=:roomtype,"
                   "`location`=:location,"
                   "`realNum`=:realNum,"
                   "`area`=:area,"
                   "`price`=:price,"
-                  "`fridge`=:fridge,"
+                  "`circumstance`=:circumstance,"
                   "`remark`=:remark "
                   "where `roomId`=:roomId") ;
 
     //将数据绑定到指定的位置
     query.bindValue(":roomId", ri.roomId);
-    query.bindValue(":floor", ri.floor);
     query.bindValue(":roomtype", ri.roomType);
     query.bindValue(":location", ri.location);
     query.bindValue(":realNum", ri.realNum);
     query.bindValue(":area", ri.area);
     query.bindValue(":price", ri.price);
-    query.bindValue(":fridge", ri.ratingNum);
+    query.bindValue(":circumstance", ri.circumstance);
     query.bindValue(":remark", ri.remark);
 
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
@@ -262,14 +263,15 @@ bool searchRoomInfo(int roomId)
     else {
         while (query.next()) {
             temp.roomId=query.value(0).toInt();
-            temp.location=query.value(3).toString();
-            temp.roomType=query.value(2).toString();
-            temp.area=query.value(7).toInt();
-            temp.realNum=query.value(6).toInt();
-            temp.ratingNum=query.value(14).toString();
+            temp.renterId=query.value(1).toInt();
+            temp.lessee=query.value(2).toInt();
+            temp.roomType=query.value(3).toString();
+            temp.location=query.value(4).toString();
+            temp.realNum=query.value(5).toInt();
+            temp.area=query.value(6).toInt();
+            temp.circumstance=query.value(7).toString();
             temp.price=query.value(8).toInt();
-            temp.remark=query.value(15).toString();
-            temp.floor=query.value(4).toInt();
+            temp.remark=query.value(9).toString();
             //qDebug()<<temp.roomId;
             return true;
         }

@@ -222,7 +222,7 @@
    </property>
    <widget class="QWidget" name="tab_2">
     <attribute name="title">
-     <string>租户资料</string>
+     <string>求租户资料</string>
     </attribute>
     <widget class="QLabel" name="label">
      <property name="geometry">
@@ -444,16 +444,6 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_Remark">
-     <property name="geometry">
-      <rect>
-       <x>170</x>
-       <y>190</y>
-       <width>471</width>
-       <height>51</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
@@ -493,6 +483,16 @@
       <string> 月</string>
      </property>
     </widget>
+    <widget class="QTextEdit" name="textEditRemark">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>187</y>
+       <width>551</width>
+       <height>51</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QPushButton" name="btnClose">
@@ -518,7 +518,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>下定金约定</string>
+    <string>预约</string>
    </property>
   </widget>
  </widget>

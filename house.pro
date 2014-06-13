@@ -16,34 +16,31 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     login.cpp \
     housedata.cpp \
-    #lessee.cpp \
     tongji.cpp \
     sentwindow.cpp \
     bookrentals.cpp \
     contract.cpp \
     rentingdata.cpp \
-   # lesseedata.cpp \
     housesatisfaction.cpp \
     replay.cpp \
-    earnestmoney.cpp
+    lessee.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
     housedata.h \
     connectdatabase.h \
     roomInfo.h \
-    #lessee.h \
     sentwindow.h \
     tongji.h \
     bookrentals.h \
     contract.h \
     rentingdata.h \
-    #lesseedata.h \
     housesatisfaction.h \
     replay.h \
-    earnestmoney.h \
-    #le_connectdatabase.h \
-    lesseeInfo.h
+    housesa_conn.h \
+    houseInfo.h \
+    lessee.h
+
 
 FORMS    += mainwindow.ui \
     login.ui \
@@ -54,10 +51,8 @@ FORMS    += mainwindow.ui \
     bookrentals.ui \
     contract.ui \
     rentingdata.ui \
-    lesseedata.ui \
     housesatisfaction.ui \
-    replay.ui \
-    earnestmoney.ui
+    replay.ui
 
 OTHER_FILES += \
     house.pro.user \

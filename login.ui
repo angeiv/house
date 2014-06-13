@@ -107,16 +107,18 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>20</y>
-      <width>291</width>
+      <width>301</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>华文隶书</family>
+      <family>宋体</family>
       <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="text">

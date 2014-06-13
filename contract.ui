@@ -490,23 +490,18 @@
         <string>备注</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lineEdit_Remark">
+      <widget class="QTextEdit" name="textEdit_Remark">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>179</y>
-         <width>421</width>
-         <height>31</height>
+         <x>70</x>
+         <y>170</y>
+         <width>531</width>
+         <height>41</height>
         </rect>
        </property>
       </widget>
      </widget>
     </widget>
-   </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>                 房屋资料                </string>
-    </attribute>
    </widget>
   </widget>
  </widget>

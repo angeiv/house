@@ -37,6 +37,8 @@ private slots:
 
     void on_btnUser_clicked();
 
+    void on_btnHouse_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *labelText;

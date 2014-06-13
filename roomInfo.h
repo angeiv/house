@@ -6,12 +6,12 @@ struct roomInfo
     int roomId;
     QString location;
     QString roomType;
-    int renterId;//fangdong
+    int renterId;//zuhu,出租状态
+    int lessee;//fang dong
     int area;
     int realNum;//shiyong mianji
-    QString ratingNum;//zhuangxiu zhuangkuang  db fridge
+    QString circumstance;//zhuangxiu zhuangkuang  db fridge
     int price;
-    int floor;//出租状态
     QString remark;
 }ri[256],temp;
 

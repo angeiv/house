@@ -187,7 +187,7 @@
        <string>备注</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditNumber">
+     <widget class="QLineEdit" name="lineEditChargeNumber">
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -197,7 +197,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditNumber2">
+     <widget class="QLineEdit" name="lineEditOrderNumber">
       <property name="geometry">
        <rect>
         <x>70</x>
@@ -237,7 +237,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditNumber3">
+     <widget class="QLineEdit" name="lineEditHouseNumber3">
       <property name="geometry">
        <rect>
         <x>430</x>
@@ -247,13 +247,13 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEditRemark">
+     <widget class="QTextEdit" name="textEditRemark">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>60</x>
         <y>90</y>
-        <width>431</width>
-        <height>71</height>
+        <width>441</width>
+        <height>78</height>
        </rect>
       </property>
      </widget>
@@ -276,7 +276,7 @@
       <string>预订单编号</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditNumber2_2">
+    <widget class="QLineEdit" name="lineEditOrderNumber_2">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -322,7 +322,7 @@
       <string>预订房屋编号</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditNumber3_2">
+    <widget class="QLineEdit" name="lineEditHouseNumber_2">
      <property name="geometry">
       <rect>
        <x>310</x>
@@ -368,13 +368,13 @@
       <string>备注</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditRemark2">
+    <widget class="QTextEdit" name="textEdit">
      <property name="geometry">
       <rect>
-       <x>110</x>
-       <y>120</y>
-       <width>431</width>
-       <height>71</height>
+       <x>90</x>
+       <y>110</y>
+       <width>441</width>
+       <height>78</height>
       </rect>
      </property>
     </widget>

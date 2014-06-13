@@ -334,7 +334,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditRatingNum">
+   <widget class="QLineEdit" name="lineEditCircumstance">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -498,7 +498,7 @@
      <string>目前状态</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBoxFloor">
+   <widget class="QComboBox" name="comboBoxRenterId">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -568,7 +568,7 @@
    <zorder>label_8</zorder>
    <zorder>label_11</zorder>
    <zorder>lineEditRommType</zorder>
-   <zorder>lineEditRatingNum</zorder>
+   <zorder>lineEditCircumstance</zorder>
    <zorder>textEditRemark</zorder>
    <zorder>lineEditLocation</zorder>
    <zorder>label_4</zorder>
@@ -582,7 +582,7 @@
    <zorder>lineEditPrice</zorder>
    <zorder>label_13</zorder>
    <zorder>label_10</zorder>
-   <zorder>comboBoxFloor</zorder>
+   <zorder>comboBoxRenterId</zorder>
   </widget>
  </widget>
  <resources/>
