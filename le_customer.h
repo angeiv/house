@@ -1,5 +1,5 @@
-#ifndef CUSTOMER_H
-#define CUSTOMER_H
+#ifndef LE_CUSTOMER_H
+#define LE_CUSTOMER_H
 
 struct customer
 {
@@ -23,4 +23,4 @@ void deleteOneLesseeInfo(customer *li,int currentIndex_le,int *maxIndex_le)
     *maxIndex_le = *maxIndex_le - 1;
 }
 
-#endif // CUSTOMER_H
+#endif // LE_CUSTOMER_H

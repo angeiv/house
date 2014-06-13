@@ -305,7 +305,7 @@ void lesseedata::on_btnCheck_clicked()
         setLesseeInfoNone();
         ui->lineEdit_Num->setReadOnly(false);
         searchStatus_le = true;
-        QMessageBox::about(NULL,"tips","please input zuhuID");
+        QMessageBox::about(NULL,"tips","please input customerId");
         //text
     }
     else {

@@ -40,7 +40,7 @@ bool queryLesseeNumber(int *count)
 
     QSqlQuery query; //定义一个QSqlQuery 类型的变量
 
-    query.exec("select * from lesseeInfo");
+    query.exec("select * from lessee");
     *count=query.size();
 
     //close connection
@@ -76,7 +76,7 @@ bool queryLesseeInfo(customer *li)
 
     QSqlQuery query;
 
-    query.exec("select * from customer");
+    query.exec("select * from lessee");
 
     int num=0;
     while (query.next()) {
@@ -118,7 +118,7 @@ bool insertLesseeInfo(customer li,int *maxIndex_le)
 
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
-    query.prepare("insert into customer "
+    query.prepare("insert into lessee "
                   "(customerId,customerName,sex,nativePlace,phoneNumber,"
                   "idCard,number,remark) "
                   "values(:customerId,:customerName,:sex,:nativePlace,:phoneNumber,"
@@ -170,7 +170,7 @@ bool updateLesseeInfo(customer li)
 
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
-    query.prepare("update `customer` set "
+    query.prepare("update `lessee` set "
                   "`customerId`=:customerId,"
                   "`customerName`=:customerName,"
                   "`sex`=:sex,"
@@ -222,7 +222,7 @@ bool deleteLesseeInfo(customer li)
 
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
-    query.prepare("delete from `customer` "
+    query.prepare("delete from `lessee` "
                   "where `customerId`=:customerId") ;
 
     //将数据绑定到指定的位置
@@ -259,7 +259,7 @@ bool searchLesseeInfo(int customerId)
 
     QSqlQuery query;
 
-    query.prepare("select * from `customer` where `customerId`=:customerId") ;
+    query.prepare("select * from `lessee` where `customerId`=:customerId") ;
 
     //将数据绑定到指定的位置
     query.bindValue(":customerId", customerId);
