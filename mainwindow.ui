@@ -43,72 +43,7 @@
        <string>房屋资料 </string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnExit">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>退出</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>80</y>
-        <width>231</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>微软雅黑</family>
-        <pointsize>14</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>使用说明：</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>客户资料</string>
-     </attribute>
-     <widget class="QPushButton" name="btnExit_2">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>退出</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnUser">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>用户管理</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnLessee">
+     <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -118,200 +53,39 @@
        </rect>
       </property>
       <property name="text">
-       <string>租户管理</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>租赁管理</string>
-     </attribute>
-     <widget class="QPushButton" name="btnContract">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>签订合同</string>
+       <string>合同签订</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_3">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>200</x>
         <y>0</y>
         <width>99</width>
         <height>27</height>
        </rect>
       </property>
       <property name="text">
-       <string>预付押金</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnExit_3">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>退出</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnBookRentals">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>预定租房</string>
+       <string>合同查询</string>
       </property>
      </widget>
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>300</x>
         <y>0</y>
         <width>99</width>
         <height>27</height>
        </rect>
       </property>
       <property name="text">
-       <string>上交房租</string>
+       <string>租金收取</string>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_4">
-     <attribute name="title">
-      <string>财务管理</string>
-     </attribute>
      <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>租金管理</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnExit_4">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>退出</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnReplay">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>定金管理</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_10">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>押金管理</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tab_5">
-     <attribute name="title">
-      <string>统计报表</string>
-     </attribute>
-     <widget class="QPushButton" name="btnExit_5">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>退出</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnHouse">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>房屋统计</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnUserInfo">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>用户统计</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnLessee_2">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>租户统计</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="btnRent">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
+        <x>400</x>
         <y>0</y>
         <width>99</width>
         <height>27</height>
@@ -321,6 +95,39 @@
        <string>租金统计</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="btnExit">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>0</y>
+        <width>99</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>退出</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>客户资料</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>租赁管理</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>财务统计</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>统计报表</string>
+     </attribute>
     </widget>
    </widget>
   </widget>

@@ -1,4 +1,0 @@
-house
-=====
-
-project with qt
