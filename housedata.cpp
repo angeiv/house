@@ -219,6 +219,9 @@ void housedata::on_btnSave_clicked()
         getRoomInfo(maxIndex);
         status = insertRoomInfo(ri[maxIndex],&maxIndex);
         ui->lineEditCount->setText(QString::number(maxIndex));
+        //set room id,maxindex has already +1
+        ri[maxIndex-1].roomId=ri[maxIndex-2].roomId+1;
+        ui->lineEditRoomId->setText(QString::number(ri[maxIndex-1].roomId));
         //msgbox
         break;
     default:
@@ -278,8 +281,8 @@ void housedata::on_btnSearch_clicked()
         setRoomInfoNone();
         ui->lineEditRoomId->setReadOnly(false);
         searchStatus = true;
-        QMessageBox::about(NULL,"提示","请输入房屋编号");
         //text
+        QMessageBox::about(NULL,"提示","请输入房屋编号，再点击查找");
     }
     else {
         int roomId;
