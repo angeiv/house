@@ -82,11 +82,11 @@ bool queryLesseeInfo(customer *li)
     while (query.next()) {
         li[num].customerId=query.value(0).toInt();
         li[num].customerName=query.value(1).toString();
-        li[num].idCard=query.value(2).toString();
+        li[num].nativePlace=query.value(2).toString();
         li[num].phoneNumber=query.value(3).toString();
-        li[num].idCard=query.value(4).toString();
-        li[num].number=query.value(5).toInt();
-        li[num].sex=query.value(6).toInt();
+        li[num].sex=query.value(4).toString();
+        li[num].idCard=query.value(5).toString();
+        li[num].number=query.value(6).toInt();
         li[num].remark=query.value(7).toString();
         num++;
     }
@@ -272,11 +272,11 @@ bool searchLesseeInfo(int customerId)
         while (query.next()) {
             temp_le.customerId=query.value(0).toInt();
             temp_le.customerName=query.value(1).toString();
-            temp_le.idCard=query.value(2).toString();
+            temp_le.nativePlace=query.value(2).toString();
             temp_le.phoneNumber=query.value(3).toString();
-            temp_le.idCard=query.value(4).toString();
-            temp_le.number=query.value(5).toInt();
-            temp_le.sex=query.value(6).toInt();
+            temp_le.sex=query.value(4).toString();
+            temp_le.idCard=query.value(5).toString();
+            temp_le.number=query.value(6).toInt();
             temp_le.remark=query.value(7).toString();
             //qDebug()<<temp.zuhuId;
             return true;

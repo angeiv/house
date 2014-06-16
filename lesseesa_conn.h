@@ -70,13 +70,12 @@ bool queryLessee_Info(customer *le)
     while (query.next()) {
         le[num].customerId=query.value(0).toInt();
         le[num].customerName=query.value(1).toString();
-        le[num].idCard=query.value(2).toString();
+        le[num].nativePlace=query.value(2).toString();
         le[num].phoneNumber=query.value(3).toString();
-        le[num].idCard=query.value(4).toString();
-        le[num].number=query.value(5).toInt();
-        le[num].sex=query.value(6).toInt();
+        le[num].sex=query.value(4).toString();
+        le[num].idCard=query.value(5).toString();
+        le[num].number=query.value(6).toInt();
         le[num].remark=query.value(7).toString();
-
         num++;
     }
 
