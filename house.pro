@@ -51,7 +51,8 @@ HEADERS  += mainwindow.h \
     connect_wanted.h \
     wantedinfo.h \
     checkUser.h \
-    userInfo.h
+    userInfo.h \
+    lesseesa_conn.h
 
 
 FORMS    += mainwindow.ui \
@@ -69,8 +70,7 @@ FORMS    += mainwindow.ui \
     lesseedata.ui
 
 OTHER_FILES += \
-    house.pro.user \
-    house.pro.user.9760f1a \
-    house.pro.user.ba4eb84 \
-    housedata.ui.bak \
-    house.pro.user.6e6f05e
+    .gitattributes \
+    .gitignore \
+    README.md \
+    house.pro.user

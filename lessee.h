@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::lessee *ui;
+    void setLesseeInformation();
 };
 
 #endif // LESSEE_H

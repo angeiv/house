@@ -1,27 +1,17 @@
 #ifndef LESSEEINFO_H
 #define LESSEEINFO_H
 
-struct lesseeInfo
+struct customer
 {
-    //按横向顺序
-    int zuhuId;
-    QString zuhuname;
-    int xingbie;//性别
-    QString worklocation;
-    int telephone;
-    int Idcard;//身份证
-    int toll;//租住人数
+    int customerId;
+    QString customerName;
+    QString nativePlace;
+    QString phoneNumber;
+    QString sex;//性别
+    QString idCard;//身份证
+    int number;//租住人数
     QString remark;
-}li[256],temp;
+}le[256];
 
-void deleteOneLesseeInfo(lesseeInfo *li,int currentIndex,int *maxIndex)
-{
-    int num = currentIndex;
-    while (num >= *maxIndex) {
-        li[num - 1] = li[num];
-        num = num + 1;
-    }
-    *maxIndex = *maxIndex - 1;
-}
 
 #endif // LESSEEINFO_H
