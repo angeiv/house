@@ -9,6 +9,10 @@
 #include <QSqlRecord>
 //#include "connect_book.h"
 #include <QMessageBox>
+#include <QtCore/QCoreApplication>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlRecord>
 
 bookRentals::bookRentals(QWidget *parent) :
     QDialog(parent),
