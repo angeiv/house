@@ -7,6 +7,10 @@
 #include <QSqlQuery>
 #include <QVariant>
 #include <QSqlRecord>
+#include <QtCore/QCoreApplication>
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlRecord>
 updatarepay::updatarepay(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::updatarepay)
