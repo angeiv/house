@@ -24,7 +24,10 @@ SOURCES += main.cpp\
     housesatisfaction.cpp \
     replay.cpp \
     lessee.cpp \
-    lesseedata.cpp
+    lesseedata.cpp \
+    depoist.cpp \
+    repaymanagement.cpp \
+    updatarepay.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -52,7 +55,15 @@ HEADERS  += mainwindow.h \
     wantedinfo.h \
     checkUser.h \
     userInfo.h \
-    lesseesa_conn.h
+    lesseesa_conn.h \
+    connect_book.h \
+    connect_contract.h \
+    connect_depoist.h \
+    connect_repay.h \
+    contractinfo.h \
+    depoist.h \
+    repaymanagement.h \
+    updatarepay.h
 
 
 FORMS    += mainwindow.ui \
@@ -67,10 +78,14 @@ FORMS    += mainwindow.ui \
     housesatisfaction.ui \
     replay.ui \
     customer.ui \
-    lesseedata.ui
+    lesseedata.ui \
+    depoist.ui \
+    repaymanagement.ui \
+    updatarepay.ui
 
 OTHER_FILES += \
     .gitattributes \
     .gitignore \
     README.md \
-    house.pro.user
+    house.pro.user \
+    house.pro.user.9760f1a

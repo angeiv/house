@@ -52,7 +52,7 @@ void updatarepay::on_pushButton_clicked()
          QMessageBox::about(NULL,"提示","不能为空！");
     }
     else{
-      item="updata repay set moneyEver=moneyEver+";
+      item="update repay set moneyEver=moneyEver+";
       item+=ui->lineEdit_2->text();
       item+=" ,moneyOwn=moneyShould-";
       item+=ui->lineEdit_2->text();
@@ -61,7 +61,7 @@ void updatarepay::on_pushButton_clicked()
         qDebug()<<item;
       if(query.exec(item))
       {
-           QMessageBox::about(NULL,"提示","预定成功！");
+           QMessageBox::about(NULL,"提示","提交成功！");
       }
 
     }
