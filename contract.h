@@ -18,8 +18,11 @@ public:
 private slots:
     void on_btnClose_clicked();
 
+    void on_btnConclud_clicked();
+
 private:
     Ui::contract *ui;
+    void setcontractInformation();
 };
 
 #endif // CONTRACT_H

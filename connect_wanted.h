@@ -8,7 +8,7 @@
 #include <QSqlRecord>
 #include "wantedinfo.h"
 
-bool queryWantedNumber(int *count)
+bool queryWantedNumber(int *count1)
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -32,7 +32,7 @@ bool queryWantedNumber(int *count)
     QSqlQuery query; //定义一个QSqlQuery 类型的变量
 
     query.exec("select * from wanted");
-    *count=query.size();
+    *count1=query.size();
 
     //close connection
     query.clear();//清空查询语句，并释放内存空间
@@ -77,8 +77,8 @@ bool queryWantedInfo(wantedInfo *wt)
                 wt[num].circumstance=query.value(5).toString();
                // wt[num].area=query.value(6).toInt();
               //  wt[num].circumstance=query.value(7).toString();
-                wt[num].price=query.value(8).toInt();
-                wt[num].roomId=query.value(8).toInt();
+                wt[num].price=query.value(6).toInt();
+                wt[num].roomId=query.value(7).toInt();
                 wt[num].sj=query.value(8).toInt();
                 wt[num].remark=query.value(9).toString();
 
@@ -101,7 +101,7 @@ bool insertWantedInfo(wantedInfo wt,int *maxIndex)
     db.setPassword("root"); //设置登录密码
 
     if (db.open()) {//打开数据库连接
-        //qDebug()<<"database is established!";
+        ;//qDebug()<<"database is established!";
     }
     else {
         qDebug()<<"build error!";
@@ -111,13 +111,13 @@ bool insertWantedInfo(wantedInfo wt,int *maxIndex)
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
     query.prepare("insert into wanted "
-                  "(customerName,phoneNumber,roomType,"
-                  "area,circumstance,roomId,price,sj,remark) "
-                  "values(:customerName,:phoneNumber,:roomType,:area,:circumstance,:roomId,"
-                  ":price,:sj,:remark)");
+                  "(customerId,customerName,phoneNumber,roomType,"
+                  "area,circumstance,price,roomId,sj,remark) "
+                  "values(:customerId,:customerName,:phoneNumber,:roomType,:area,:circumstance,"
+                  ":price,:roomId,:sj,:remark)");
 
     //将数据绑定到指定的位置
-   // query.bindValue(":customerId", wt.customerId);
+    query.bindValue(":customerId", wt.customerId);
     query.bindValue(":customerName", wt.customerName);
     query.bindValue(":phoneNumber", wt.phoneNumber);
     query.bindValue(":roomType", wt.roomType);
@@ -130,7 +130,7 @@ bool insertWantedInfo(wantedInfo wt,int *maxIndex)
 
     query.bindValue(":remark", wt.remark);
 
-//  qDebug()<<wt.area<<wt.circumstance<<wt.remark<<wt.phoneNumber<<wt.customerName<<wt.price<<wt.roomId<<wt.sj<<wt.customerId<<wt.roomType;
+    //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
     if (query.exec()) {
         *maxIndex = *maxIndex + 1;
         return true;
@@ -164,6 +164,7 @@ bool updateWantedInfo(wantedInfo wt)
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
     query.prepare("update `wanted` set "
+                  "`customerName`=:customerName,"
                   "`phoneNumber`=:phoneNumber,"
                   "`roomType`=:roomType,"
                   "`area`=:area,"
@@ -222,10 +223,10 @@ bool deleteWantedInfo(wantedInfo wt)
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
     query.prepare("delete from `wanted` "
-                  "where `wantedNumber`=:wantedNumber") ;
+                  "where `customerId`=:customerId") ;
 
     //将数据绑定到指定的位置
-    query.bindValue(":wantedNumber", wt.customerId);
+    query.bindValue(":cutomerId", wt.customerId);
 
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
     if (query.exec())
@@ -272,10 +273,10 @@ bool searchWantedInfo(int customerId)
             tem.phoneNumber=query.value(2).toInt();
             tem.roomType=query.value(3).toString();
             tem.area=query.value(4).toInt();
-            tem.circumstance=query.value(7).toString();
-            tem.price=query.value(8).toInt();
-            tem.roomId=query.value(5).toInt();
-            tem.sj=query.value(6).toInt();
+            tem.circumstance=query.value(5).toString();
+            tem.price=query.value(6).toInt();
+            tem.roomId=query.value(7).toInt();
+            tem.sj=query.value(8).toInt();
 
 
             tem.remark=query.value(9).toString();

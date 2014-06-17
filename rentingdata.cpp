@@ -101,9 +101,9 @@ void rentingdata::setWantedInfoNone()
 
 void rentingdata::getWantedInfo(int index)
 {
-       // wt[index].customerId=ui->lineEditCustomerId->text().toInt();
+    wt[index].customerId=ui->lineEditCustomerId->text().toInt();
         wt[index].customerName=ui->lineEditCustomerName->text();
-        wt[index].phoneNumber=ui->lineEditPhoneNumber->text();
+        wt[index].phoneNumber=ui->lineEditPhoneNumber->text().toInt();
         wt[index].roomType=ui->lineEditRoomType->text();
         wt[index].area=ui->lineEditArea->text().toInt();
         wt[index].roomId=ui->lineEditRoomId->text().toInt();
@@ -112,7 +112,7 @@ void rentingdata::getWantedInfo(int index)
         wt[index].sj=ui->lineEditTime->text().toInt();
         //wt[index].rentewtd=0;//new foom have no cunstomer
         wt[index].remark=ui->textEditRemark->toPlainText();
-    //qDebug()<<wt[index].customerId<<wt[index].area;
+    //qDebug()<<ri[maxIndex].roomId<<ri[maxIndex].roomType<<ri[maxIndex].floor;
 }
 
 rentingdata::~rentingdata()
@@ -130,7 +130,7 @@ void rentingdata::on_btnClose_clicked()
       ui->btnDelete->setEnabled(true);
 
       setLineEditDisabled();
-      ui->lineEditCustomerId->setEnabled(true);
+      ui->lineEditRoomId->setEnabled(true);
 }
 
 void rentingdata::on_btnAdd_clicked()
@@ -180,7 +180,7 @@ void rentingdata::on_btnDelete_clicked()
            if(deleteWantedInfo(wt[currentIndex_2 - 1])) {
                QMessageBox::about(NULL,"提示","删除完毕！");
                //shuzu xiangguan yidong
-               deleteOneWantedInfo(wt,currentIndex_2,&maxIndex_2);
+               //deleteOneWantedInfo(wt,currentIndex_2,&maxIndex_2);
 
                ui->lineEditCount->setText(QString::number(maxIndex_2));
                //queryRoomInfo(ri);
@@ -235,7 +235,7 @@ void rentingdata::on_btnSearch_clicked()
     if (!searchStatus_2) {
             setLineEditDisabled();
             setWantedInfoNone();
-            ui->lineEditCustomerId->setReadOnly(false);
+            ui->lineEditRoomId->setReadOnly(false);
             searchStatus_2 = true;
             QMessageBox::about(NULL,"提示","请输入房屋编号");
             //text

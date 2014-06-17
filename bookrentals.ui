@@ -257,7 +257,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_Fro">
+    <widget class="QLineEdit" name="lineEdit_bookMoney">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -277,7 +277,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_Salman">
+    <widget class="QLineEdit" name="lineEdit_Saleman">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -297,7 +297,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEditBookNum">
+    <widget class="QLineEdit" name="lineEditroomId">
      <property name="geometry">
       <rect>
        <x>460</x>
@@ -307,7 +307,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_Eff">
+    <widget class="QLineEdit" name="lineEdit_VTime">
      <property name="geometry">
       <rect>
        <x>380</x>

@@ -3,18 +3,19 @@
 #include "housedata.h"
 #include "bookrentals.h"
 #include "replay.h"
-//#include "customer.h"
+#include "rentingdata.h"
 #include "housesatisfaction.h"
 #include "tongji.h"
 #include "contract.h"
 #include "lessee.h"
 #include "sentwindow.h"
 #include "lesseedata.h"
-#include"rentingdata.h"
+#include "depoist.h"
 #include "qdesktopwidget.h"
 #include "qdatetime.h"
 #include "qtimer.h"
-
+#include "repaymanagement.h"
+#include "updatarepay.h"
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -126,4 +127,22 @@ void MainWindow::on_btnLessee_clicked()
 {
     lesseedata *ld = new lesseedata();
     ld->show();
+}
+
+void MainWindow::on_pushButton_10_clicked()
+{
+    Depoist *aa=new Depoist();
+    aa->show();
+}
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    Repaymanagement *dd=new Repaymanagement();
+    dd->show();
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    updatarepay *cc=new updatarepay();
+    cc->show();
 }

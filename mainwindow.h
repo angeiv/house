@@ -49,6 +49,12 @@ private slots:
 
     void on_btnLessee_clicked();
 
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_5_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::MainWindow *ui;
     QLabel *labelText;

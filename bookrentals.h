@@ -18,6 +18,8 @@ public:
 private slots:
     void on_btnClose_clicked();
 
+    void on_btnBook_clicked();
+
 private:
     Ui::bookRentals *ui;
 };
