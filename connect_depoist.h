@@ -10,7 +10,12 @@
 
 bool connectiondatabase( )
 {
-    QSqlDatabase db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
+    QSqlDatabase db;
+
+    if (QSqlDatabase::contains("qt_sql_default_connection"))
+        db=QSqlDatabase::database("qt_sql_default_connection");
+    else
+            QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
     db.setHostName("localhost");//指定数据库服务器名称
     db.setDatabaseName("house"); //连接一个已存在的数据
     db.setUserName("root");      //设置登录名

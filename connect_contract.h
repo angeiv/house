@@ -32,9 +32,9 @@ bool insertcontractInfo(Contract tmp)
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
     query.prepare("insert into contract "
                   "(bookNo,customerName,roomId,depoistM,endDate,rentDate,"
-                  "moneyShould,signDate,saleMan,remark) "
+                  "moneyShould,signDate,salesMan,remark) "
                   "values(:bookNo,:customerName,:roomId,:depoistM,:endDate,:rentDate,"
-                  ":moneyShould,:signDate,:saleMan,:remark)");
+                  ":moneyShould,:signDate,:salesMan,:remark)");
 
     //将数据绑定到指定的位置
     query.bindValue(":bookNo", tmp.bookNo);
@@ -45,7 +45,7 @@ bool insertcontractInfo(Contract tmp)
     query.bindValue(":rentDate", tmp.rentdate);
     query.bindValue(":moneyShould", tmp.moneyShould);
     query.bindValue(":signDate", tmp.signDate);
-    query.bindValue(":saleMan", tmp.saleman);
+    query.bindValue(":salesMan", tmp.saleman);
     query.bindValue(":remark", tmp.remark);
     qDebug()<<tmp.signDate;
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
