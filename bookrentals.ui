@@ -166,7 +166,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>限定客户</string>
+      <string>客户编号</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_6">

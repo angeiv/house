@@ -50,12 +50,13 @@ bool insertcontractInfo(Contract tmp)
     qDebug()<<tmp.signDate;
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
     if (query.exec()) {
-
+        return true;
     }
     else{
         return false;
     }
 }
+
 bool insertrepayInfo(Contract tmp)
 {
     //check connection exist or not
@@ -98,7 +99,7 @@ bool insertrepayInfo(Contract tmp)
     else
         return false;
 }
-/*bool updateRoomInfo1(contract tmp)
+bool updateRoomInfo1()
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -121,13 +122,15 @@ bool insertrepayInfo(Contract tmp)
 
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
-    query.prepare("update `roomInfo` set "
-                  "`rentId`=:rentId"
-                  "where select customerId from wanted where customerName='tmp.'");
+    query.prepare("update house.roomInfo,house.wanted "
+                  "set roomInfo.rentId = wanted.customerId "
+                  "where wanted.customerName = :customerName "
+                  "and roomInfo.roomId = wanted.roomId");
 
 
     //将数据绑定到指定的位置
-    query.bindValue(":rentId", tmp.);
+
+    query.bindValue(":customerName", tmp.customerName);
 
 
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
@@ -135,6 +138,6 @@ bool insertrepayInfo(Contract tmp)
         return true;
     else
         return false;
-}*/
+}
 
 #endif // CONNECT_CONTRACT_H

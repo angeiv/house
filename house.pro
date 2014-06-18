@@ -22,7 +22,6 @@ SOURCES += main.cpp\
     contract.cpp \
     rentingdata.cpp \
     housesatisfaction.cpp \
-    replay.cpp \
     lessee.cpp \
     lesseedata.cpp \
     depoist.cpp \
@@ -40,7 +39,6 @@ HEADERS  += mainwindow.h \
     contract.h \
     rentingdata.h \
     housesatisfaction.h \
-    replay.h \
     housesa_conn.h \
     houseInfo.h \
     lessee.h \
@@ -76,8 +74,11 @@ FORMS    += mainwindow.ui \
     contract.ui \
     rentingdata.ui \
     housesatisfaction.ui \
+<<<<<<< Updated upstream
     replay.ui \
     customer.ui \
+=======
+>>>>>>> Stashed changes
     lesseedata.ui \
     depoist.ui \
     repaymanagement.ui \

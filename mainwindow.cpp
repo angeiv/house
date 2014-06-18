@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include "housedata.h"
 #include "bookrentals.h"
-#include "replay.h"
 #include "rentingdata.h"
 #include "housesatisfaction.h"
 #include "tongji.h"
@@ -83,8 +82,7 @@ void MainWindow::on_btnBookRentals_clicked()
 
 void MainWindow::on_btnReplay_clicked()
 {
-    replay *rp = new replay();
-    rp->show();
+
 }
 
 void MainWindow::on_btnUser_clicked()

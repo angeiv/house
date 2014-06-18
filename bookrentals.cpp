@@ -83,9 +83,9 @@ void bookRentals::on_btnBook_clicked()
         item+="','";
         item+=ui->dateEdit->text();
         item+="','";
-        item+=ui->dateEdit_2->text();
-        item+="','";
         item+=ui->lineEdit_Saleman->text();
+        item+="','";
+        item+=ui->dateEdit_2->text();
         item+="')";
         qDebug()<<item;
         if(query.exec(item))
