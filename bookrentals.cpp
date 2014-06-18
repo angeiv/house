@@ -35,7 +35,7 @@ void bookRentals::on_btnClose_clicked()
 
 void bookRentals::on_btnBook_clicked()
 {
-    QSqlQuery query;
+   /* QSqlQuery query;
     QString item;
     QSqlDatabase db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
     db.setHostName("localhost");//指定数据库服务器名称
@@ -51,8 +51,27 @@ void bookRentals::on_btnBook_clicked()
     {
         qDebug()<<"build error!";
         //return false;
-    }
+    }*/
      //return true;
+    QSqlQuery query;
+    QString item;
+    QSqlDatabase db;
+    if (QSqlDatabase::contains("qt_sql_default_connection"))
+        db=QSqlDatabase::database("qt_sql_default_connection");
+    else
+        db=QSqlDatabase::addDatabase("QMYSQL"); //从MySql驱动程序中获取一个MySql数据库
+    db.setHostName("localhost");//指定数据库服务器名称
+    db.setDatabaseName("house"); //连接一个已存在的数据
+    db.setUserName("root");      //设置登录名
+    db.setPassword("root"); //设置登录密码
+
+    if (db.open()) {//打开数据库连接
+        qDebug()<<"database is established.";
+    }
+    else {
+        qDebug()<<"build error!";
+
+    }
 
     if(ui->lineEdit_Cli->text().isEmpty()||ui->lineEditroomId->text().isEmpty())
     {

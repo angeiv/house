@@ -34,18 +34,18 @@ void contract::setcontractInformation()
    // index=index-1;//room no.
 
     //set room information
-    ui->lineEditBookNum->setText(QString::number(tmp.bookNo));
-    ui->lineEdit_CashPledge->setText(QString::number(tmp.depoistM));
-    ui->lineEdit_Houseingnum->setText(QString::number(tmp.roomId));
-    ui->lineEdit_Name->setText(tmp.customerName);
-    ui->lineEdit_All->setText(QString::number(tmp.moneyShould));
-    ui->lineEdit_Saleman->setText(QString::number(tmp.saleman));
+  tmp.bookNo=  ui->lineEditBookNum->text().toInt();
+    tmp.depoistM=ui->lineEdit_CashPledge->text().toInt();
+   tmp.roomId= ui->lineEdit_Houseingnum->text().toInt();
+    tmp.customerName=ui->lineEdit_Name->text();
+   tmp.moneyShould= ui->lineEdit_All->text().toInt();
+    tmp.saleman=ui->lineEdit_Saleman->text().toInt();
    // ui->dateEdit->setText(tmp.enddate);
-     ui->dateEdit->setDate(tmp.enddate);
+    tmp.enddate= ui->dateEdit->date();
    // ui->dateEdit_2->setText(tmp.signDate);
-   ui->dateEdit_2->setDate(tmp.signDate);
-    ui->lineEdit_Tenancy->setText(QString::number(tmp.rentdate));
-    ui->textEdit_Remark->setText(tmp.remark);
+   tmp.signDate=ui->dateEdit_2->date();
+   tmp.rentdate= ui->lineEdit_Tenancy->text().toInt();
+    tmp.remark=ui->textEdit_Remark->toPlainText();
 
 }
 void contract::on_btnConclud_clicked()
@@ -53,8 +53,8 @@ void contract::on_btnConclud_clicked()
     bool status = 1;
     setcontractInformation();
     status=insertcontractInfo(tmp);
-    status=insertrepayInfo(tmp);
-   status=updateRoomInfo1();
+ status=insertrepayInfo(tmp);
+ status=updateRoomInfo1(tmp);
     if (status)
         QMessageBox::about(this,tr("提示"),tr("保存成功！"));
     else

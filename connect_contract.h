@@ -99,7 +99,7 @@ bool insertrepayInfo(Contract tmp)
     else
         return false;
 }
-bool updateRoomInfo1()
+bool updateRoomInfo1(Contract tmp)
 {
     //check connection exist or not
     QSqlDatabase db;
