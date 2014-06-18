@@ -74,11 +74,6 @@ FORMS    += mainwindow.ui \
     contract.ui \
     rentingdata.ui \
     housesatisfaction.ui \
-<<<<<<< Updated upstream
-    replay.ui \
-    customer.ui \
-=======
->>>>>>> Stashed changes
     lesseedata.ui \
     depoist.ui \
     repaymanagement.ui \
@@ -88,5 +83,4 @@ OTHER_FILES += \
     .gitattributes \
     .gitignore \
     README.md \
-    house.pro.user \
-    house.pro.user.9760f1a
+    house.pro.user 
