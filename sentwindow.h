@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::sentwindow *ui;
+    void setWantedInformation();
 };
 
 #endif // SENTWINDOW_H

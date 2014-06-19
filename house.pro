@@ -61,7 +61,11 @@ HEADERS  += mainwindow.h \
     contractinfo.h \
     depoist.h \
     repaymanagement.h \
-    updatarepay.h
+    updatarepay.h \
+    re_depositInfo.h \
+    replay_conn.h \
+    customer.h \
+    wantedsati.h
 
 
 FORMS    += mainwindow.ui \
@@ -77,7 +81,8 @@ FORMS    += mainwindow.ui \
     lesseedata.ui \
     depoist.ui \
     repaymanagement.ui \
-    updatarepay.ui
+    updatarepay.ui \
+    replay.ui
 
 OTHER_FILES += \
     .gitattributes \

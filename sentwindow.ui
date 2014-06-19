@@ -47,6 +47,31 @@
      <string>面积要求</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>定向价位</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>装修需求</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>意向房屋编号</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>意向预期</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>备注</string>
+    </property>
+   </column>
   </widget>
  </widget>
  <resources/>

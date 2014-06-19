@@ -7,7 +7,7 @@
 #include <QSqlQuery>
 #include <QVariant>
 #include <QSqlRecord>
-bool insertcontractInfo(Contract tmp)
+bool insertcontractInfo()
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -57,7 +57,7 @@ bool insertcontractInfo(Contract tmp)
     }
 }
 
-bool insertrepayInfo(Contract tmp)
+bool insertrepayInfo()
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -99,7 +99,7 @@ bool insertrepayInfo(Contract tmp)
     else
         return false;
 }
-bool updateRoomInfo1(Contract tmp)
+bool updateRoomInfo1()
 {
     //check connection exist or not
     QSqlDatabase db;
@@ -122,20 +122,26 @@ bool updateRoomInfo1(Contract tmp)
 
     QSqlQuery query;
     //设置将要执行的SQL语句，并设定被绑定的数据的位置
-    query.prepare("update house.roomInfo,house.wanted "
-                  "set roomInfo.rentId = wanted.customerId "
-                  "where wanted.customerName = :customerName "
-                  "and roomInfo.roomId = wanted.roomId");
+    query.prepare("update house.roomInfo ,house.wanted,house.contract,house.repay"
+                  "set roomInfo.renterId = wanted.customerId ,"
+                  "repay.customerId=wanted.customerId"
+
+                  "where contract.customerName=:customerName"
+                  "and repay.customerName=:customerName1"
+                  "and wanted.customerName = contract.customerName "
+                  "and roomInfo.roomId = contract.roomId");
 
 
     //将数据绑定到指定的位置
 
     query.bindValue(":customerName", tmp.customerName);
-
-
+     query.bindValue(":customerName1", tmp.customerName);
+  // qDebug()<<tmp.customerName;
     //qDebug()<<ri.roomId<<ri.floor<<ri.roomType<<ri.location<<ri.realNum<<ri.area<<ri.price<<ri.ratingNum<<ri.remark;
     if (query.exec())
+    {
         return true;
+    }
     else
         return false;
 }
