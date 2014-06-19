@@ -129,7 +129,7 @@
      <widget class="QPushButton" name="btnContract">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>200</x>
         <y>0</y>
         <width>99</width>
         <height>27</height>
@@ -137,19 +137,6 @@
       </property>
       <property name="text">
        <string>签订合同</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>预付押金</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btnExit_3">
@@ -181,7 +168,7 @@
      <widget class="QPushButton" name="pushButton_4">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>100</x>
         <y>0</y>
         <width>99</width>
         <height>27</height>
@@ -199,7 +186,7 @@
      <widget class="QPushButton" name="pushButton_5">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>100</x>
         <y>0</y>
         <width>99</width>
         <height>27</height>
@@ -222,26 +209,10 @@
        <string>退出</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnReplay">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>99</width>
-        <height>27</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>定金管理</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="pushButton_10">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>0</x>
         <y>0</y>
         <width>99</width>
         <height>27</height>

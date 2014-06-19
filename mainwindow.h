@@ -33,8 +33,6 @@ private slots:
 
     void on_btnBookRentals_clicked();
 
-    void on_btnReplay_clicked();
-
     void on_btnUser_clicked();
 
     void on_btnHouse_clicked();

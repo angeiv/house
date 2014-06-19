@@ -80,11 +80,6 @@ void MainWindow::on_btnBookRentals_clicked()
     br->show();
 }
 
-void MainWindow::on_btnReplay_clicked()
-{
-
-}
-
 void MainWindow::on_btnUser_clicked()
 {
     rentingdata *cs = new rentingdata();
