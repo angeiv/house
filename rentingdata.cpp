@@ -235,9 +235,9 @@ void rentingdata::on_btnSearch_clicked()
     if (!searchStatus_2) {
             setLineEditDisabled();
             setWantedInfoNone();
-            ui->lineEditRoomId->setReadOnly(false);
+            ui->lineEditCustomerId->setReadOnly(false);
             searchStatus_2 = true;
-            QMessageBox::about(NULL,"提示","请输入房屋编号");
+            QMessageBox::about(NULL,"提示","请输入用户编号");
             //text
         }
         else {
