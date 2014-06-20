@@ -54,8 +54,8 @@ void updatarepay::on_pushButton_clicked()
     else{
       item="update repay set moneyEver=moneyEver+";
       item+=ui->lineEdit_2->text();
-      item+=" ,moneyOwn=moneyShould-";
-      item+=ui->lineEdit_2->text();
+      item+=" ,moneyOwn=moneyShould-moneyEver";
+      //item+=ui->lineEdit_2->text();
       item+=" where roomId=";
       item+=ui->lineEdit->text();
         qDebug()<<item;
