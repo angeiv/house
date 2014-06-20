@@ -52,9 +52,9 @@ void contract::on_btnConclud_clicked()
 {
     bool status = 1;
     setcontractInformation();
- //   status=insertcontractInfo();
-//status=insertrepayInfo();
-status=updateRoomInfo1();
+    status=insertcontractInfo();
+    status=insertrepayInfo();
+//status=updateRoomInfo1();
     if (status)
         QMessageBox::about(this,tr("提示"),tr("保存成功！"));
     else
