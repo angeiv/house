@@ -67,7 +67,6 @@ HEADERS  += mainwindow.h \
     customer.h \
     wantedsati.h
 
-
 FORMS    += mainwindow.ui \
     login.ui \
     housedata.ui \
@@ -81,9 +80,8 @@ FORMS    += mainwindow.ui \
     lesseedata.ui \
     depoist.ui \
     repaymanagement.ui \
-    updatarepay.ui \
-    replay.ui
-
+    updatarepay.ui
+    
 OTHER_FILES += \
     .gitattributes \
     .gitignore \
